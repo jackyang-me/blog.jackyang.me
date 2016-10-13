@@ -11,11 +11,14 @@
   "dependencies": {
     "element-ui": "^1.0.0-rc.6",
     "koa": "^1.2.4",
+    "koa-router": "^5.4.0",
+    "koa-static": "^2.0.0",
     "moment": "^2.15.1",
     "vue": "^2.0.2",
     "vue-router": "^2.0.0",
     "vue-touch": "git://github.com/vuejs/vue-touch.git#next",
-    "vuex": "^2.0.0"
+    "vuex": "^2.0.0",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
