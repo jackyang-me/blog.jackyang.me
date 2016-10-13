@@ -1,0 +1,45 @@
+{
+  "name": "blog.jackyang.me",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "element-ui": "^1.0.0-rc.6",
+    "koa": "^1.2.4",
+    "moment": "^2.15.1",
+    "vue": "^2.0.2",
+    "vue-router": "^2.0.0",
+    "vue-touch": "git://github.com/vuejs/vue-touch.git#next",
+    "vuex": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.17.0",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.7.1",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-friendly-formatter": "^2.0.6",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-html": "^1.5.3",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "image-webpack-loader": "^1.8.0",
+    "shelljs": "^0.7.4",
+    "style-loader": "^0.13.1",
+    "uglifyjs": "^2.4.10",
+    "url-loader": "^0.5.7",
+    "vue-loader": "^9.5.3",
+    "webpack": "^1.13.1"
+  }
+}
