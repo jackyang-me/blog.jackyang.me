@@ -3,7 +3,7 @@ var koa = require('koa');
 var serve = require('koa-static');
 var bodyParser = require('koa-bodyparser');
 var app = koa();
-var router = require('./router');
+var postRouter = require('./routers/post');
 var AV = require('leancloud-storage');
 
 AV.init({
@@ -19,6 +19,6 @@ app.use(serve(path.resolve(__dirname, '../../')));
 app.use(serve(path.resolve(__dirname, '../../dist')));
 
 // routes
-app.use(router.routes());
+app.use(postRouter.routes());
 
 app.listen(4141);
