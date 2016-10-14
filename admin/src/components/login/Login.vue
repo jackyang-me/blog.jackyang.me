@@ -1,8 +1,8 @@
 <style lang="sass">
   .code {
-    color: red
-    $--active {
-      color: green
+    color: red;
+    &--active {
+      color: green;
     }
   }
 </style>
