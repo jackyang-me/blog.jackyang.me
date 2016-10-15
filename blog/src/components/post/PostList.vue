@@ -1,5 +1,6 @@
 <template>
   <div>
+    this is post list
   </div>
 </template>
 
