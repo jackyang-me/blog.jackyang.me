@@ -1,0 +1,15 @@
+/*--- card mixinx ---*/
+@mixin card-border {
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.09);
+}
+
+@mixin card-margin {
+  margin: 0 auto;
+  margin-bottom: 13px;
+}
+
+@mixin card-padding {
+  padding: 10px 20px 15px 20px;
+}

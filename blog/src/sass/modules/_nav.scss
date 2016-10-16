@@ -1,0 +1,45 @@
+.navBar {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0,0,0,.15);
+}
+
+.navBar__inner {
+  position: relative;
+  margin: 0 auto;
+  max-width: 660px;
+}
+
+/*--- nav bar logo ---*/
+.navBar__logo {
+  position: relative;
+  display: inline-block;
+  height: $navHeight;
+  line-height: $navHeight;
+  font-weight: 300;
+  font-family: monospace;
+}
+
+/*--- nav bar nav ---*/
+.navBar__nav {
+  display: inline-block;
+  float: right;
+}
+.navBar__navItem {
+  padding-left: 40px;
+  line-height: $navHeight;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(0,0,0,0.44);
+  &:hover {
+    color: rgba(0,0,0,.8);
+  }
+  &--active {
+    @extend .navBar__navItem;
+    color: #02b875;
+    &:hover {
+      color: #02b875;
+    }
+  }
+}

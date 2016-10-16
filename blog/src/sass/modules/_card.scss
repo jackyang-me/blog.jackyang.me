@@ -1,0 +1,7 @@
+.card {
+  @include card-margin;
+  @include card-padding;
+  @include card-border;
+  max-width: 660px;
+  background-color: #fff;
+}

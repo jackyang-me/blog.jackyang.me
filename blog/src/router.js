@@ -4,9 +4,9 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [{
-  path: '/post',
-  name: 'post-list',
-  component: require('components/post/Post.vue')
+  path: '/home',
+  name: 'home',
+  component: require('components/home/Home.vue')
   /*
   component: resolve => {
     require.ensure(['components/post/PostList.vue'], () => {

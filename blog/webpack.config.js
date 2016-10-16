@@ -23,6 +23,7 @@ module.exports = {
       'actions': path.resolve(__dirname, './src/vuex/actions'),
       'assets': path.resolve(__dirname, './src/assets'),
       'filters': path.resolve(__dirname, './src/filters'),
+      'sass': path.resolve(__dirname, './src/sass'),
       'services': path.resolve(__dirname, './src/services')
     }
   },
@@ -50,6 +51,9 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: "style!css"
+    }, {
+      test: /\.scss$/,
+      loaders: ['style', 'css', 'sass']
     }, {
       test: /\.json$/,
       loader: 'json'
