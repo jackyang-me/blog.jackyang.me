@@ -1,11 +1,11 @@
 <template>
   <div class="postItem card">
     <div class="postItem__time">{{date | agoFilter}}</div>
-    <div class="postItem__cover--leading" v-if="coverImage">
+    <div class="postItem__cover--leading" v-if="coverImage" v-touch:tap="goToPostDetails">
       <img :src="coverImage" alt="">
     </div>
-    <h3 class="postItem__title--after">{{title}}</h3>
-    <h4 class="postItem__subtitle" v-if="subtitle">{{subtitle}}</h4>
+    <h3 class="postItem__title--after" v-touch:tap="goToPostDetails">{{title}}</h3>
+    <h4 class="postItem__subtitle" v-if="subtitle" v-touch:tap="goToPostDetails">{{subtitle}}</h4>
   </div>
 </template>
 
@@ -43,6 +43,12 @@
 
     filters: {
       agoFilter
+    },
+
+    methods: {
+      goToPostDetails: function () {
+        this.$router.push({name: 'post-details', params: {id: this.postId}});
+      }
     }
   }
 </script>

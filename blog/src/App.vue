@@ -6,8 +6,5 @@
 
 <script>
   import 'sass/index.scss';
-
-  export default {
-    replace: false
-  };
+  export default {};
 </script>

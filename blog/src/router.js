@@ -4,9 +4,20 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [{
-  path: '/home',
+  path: '/',
   name: 'home',
-  component: require('components/home/Home.vue')
+  redirect: '/blog',
+  component: require('components/home/Home.vue'),
+  children: [{
+    path: 'blog',
+    component: require('components/post/PostList.vue')
+  }, {
+    path: 'picture',
+    component: require('components/picture/Picture.vue')
+  }, {
+    path: 'about',
+    component: require('components/about/About.vue')
+  }]
   /*
   component: resolve => {
     require.ensure(['components/post/PostList.vue'], () => {
@@ -17,7 +28,7 @@ const routes = [{
 }, {
   path: '/post/:id',
   name: 'post-details',
-  component: require('components/post/PostDetails.vue')
+  component: require('components/post/Post.vue')
   /*
   component: resolve => {
     require.ensure(['components/post/PostDetails.vue'], () => {

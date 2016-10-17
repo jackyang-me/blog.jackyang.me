@@ -1,11 +1,51 @@
 <template>
-  <div>
-    this is post details
+  <div class="postDetails">
+    <header>
+      <h1 class="postDetails__title">{{title}}</h1>
+      <h2 v-if="subtitle" class="postDetails__subtitle">{{subtitle}}</h2>
+    </header>
+    <article class="postDetails__article markdown-body" v-html="compiledContent"></article>
   </div>
 </template>
 
 <script>
-  export default {
+  import { markdown as markdownFilter } from 'filters/filters';
+  import marked from 'marked';
 
+  export default {
+    props: {
+      title: {
+        type: String,
+        default: ''
+      },
+      subtitle: {
+        type: String,
+        default: ''
+      },
+      content: { // markdown string
+        type: String,
+        default: ''
+      },
+      readCount: {
+        type: Number,
+        default: 0
+      },
+      releasedAt: {
+        type: Date
+      },
+      lastUpdatedAt: {
+        type: Date
+      }
+    },
+
+    computed: {
+      compiledContent () {
+        if (this.content) {
+            return marked(this.content || '', {sanitize: true});
+        } else {
+          return '';
+        }
+      }
+    }
   }
 </script>

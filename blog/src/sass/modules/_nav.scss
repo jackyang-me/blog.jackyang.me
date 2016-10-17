@@ -18,7 +18,7 @@
   height: $navHeight;
   line-height: $navHeight;
   font-weight: 300;
-  font-family: monospace;
+  font-family: monospace, arial, inherit;
 }
 
 /*--- nav bar nav ---*/
@@ -35,8 +35,7 @@
   &:hover {
     color: rgba(0,0,0,.8);
   }
-  &--active {
-    @extend .navBar__navItem;
+  &.router-link-active { /* vue-router will add this class automatically */
     color: #02b875;
     &:hover {
       color: #02b875;

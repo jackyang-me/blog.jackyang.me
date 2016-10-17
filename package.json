@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "avoscloud-sdk": "^0.6.10",
     "element-ui": "^1.0.0-rc.6",
+    "highlight.js": "^9.7.0",
     "koa": "^1.2.4",
     "koa-bodyparser": "^2.2.0",
     "koa-logger": "^1.3.0",
@@ -17,6 +19,7 @@
     "koa-static": "^2.0.0",
     "leancloud-storage": "^1.5.0",
     "log4js": "^0.6.38",
+    "marked": "^0.3.6",
     "moment": "^2.15.1",
     "normalize.css": "^5.0.0",
     "simplemde": "^1.11.2",

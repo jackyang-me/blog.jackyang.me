@@ -1,5 +1,5 @@
 <template>
-  <div>my pictures</div>
+  <div>this is about me</div>
 </template>
 
 <script>

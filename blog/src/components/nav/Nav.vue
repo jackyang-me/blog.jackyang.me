@@ -5,9 +5,9 @@
         Blog of &lt;YGJACK&gt;
       </div>
       <nav class="navBar__nav">
-        <a href='#' class="navBar__navItem--active">Blog</a>
-        <a href='#' class="navBar__navItem">Picture</a>
-        <a href='#' class="navBar__navItem">About Me</a>
+        <router-link to="/blog" class="navBar__navItem">Blog</router-link>
+        <router-link to="/picture" class="navBar__navItem">Picture</router-link>
+        <router-link to="/about" class="navBar__navItem">About Me</router-link>
       </nav>
     </div>
   </div>

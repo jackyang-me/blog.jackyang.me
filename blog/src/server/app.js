@@ -18,7 +18,7 @@ AV.init({
 
 // error handler
 // must be the 1st middleware
-app.use(function *(next) {
+/*app.use(function *(next) {
   try {
     yield next;
   } catch (err) {
@@ -32,7 +32,7 @@ app.use(function *(next) {
 
   //This will only set message
   // throw new Error('Error Message');
-});
+});*/
 
 // logger
 app.use(koaLogger());
