@@ -17,8 +17,16 @@ postRouter.get('/post/:id', function *(next) {
   }
 });
 
-postRouter.get('/post/error', function *(next) {
-    throw new Error('i generated this error');
+postRouter.get('/post/list/:page', function *(next) {
+    var postList = [];
+    var pageIndex = this.params.page - 1;
+
+    if (isNaN(pageIndex)) {
+      pageIndex = 0;
+    }
+
+    postList = yield postService.getPostSummaryList(pageIndex, 20);
+    this.body = {code: 0, data: postList};
 });
 
 module.exports = postRouter;

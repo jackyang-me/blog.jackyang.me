@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "avoscloud-sdk": "^0.6.10",
     "element-ui": "^1.0.0-rc.6",
     "highlight.js": "^9.7.0",
     "koa": "^1.2.4",

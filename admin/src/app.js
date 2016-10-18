@@ -9,6 +9,7 @@ Vue.use(VueTouch);
 /* eslint-disable no-new */
 new Vue({
   el: 'body',
+  replace: false,
   router,
   render: h => h(App)
 });

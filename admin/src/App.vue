@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  export default {
-    replace: false
-  };
+  import 'sass/index.scss';
+  export default {};
 </script>

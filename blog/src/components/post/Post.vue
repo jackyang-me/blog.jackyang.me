@@ -5,7 +5,8 @@
     <post-details v-if="postDetails"
                   :title="postDetails.title"
                   :subtitle="postDetails.subtitle"
-                  :content="postDetails.content"></post-details>
+                  :content="postDetails.content"
+                  :releasedAt="new Date(postDetails.releasedAt.iso)"></post-details>
     <!--<post-comments></post-comments>-->
   </div>
 </template>

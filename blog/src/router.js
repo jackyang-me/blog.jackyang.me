@@ -4,12 +4,15 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [{
+  path: '/blog',
+  redirect: '/blog/1'
+}, {
   path: '/',
   name: 'home',
-  redirect: '/blog',
+  redirect: '/blog/1',
   component: require('components/home/Home.vue'),
   children: [{
-    path: 'blog',
+    path: 'blog/:pageIndex',
     component: require('components/post/PostList.vue')
   }, {
     path: 'picture',

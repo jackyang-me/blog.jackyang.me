@@ -1,16 +1,18 @@
 <template>
   <div class="postList">
     <post-item v-for="post in postList"
-              :post-id="post.id"
+              :post-id="post.objectId"
               :title="post.title"
               :subtitle="post.subtitle"
               :small-cover-image="post.smallCoverImage"
               :cover-image="post.coverImage"
-              :date="post.releasedAt"></post-item>
+              :date="new Date(post.releasedAt.iso)"></post-item>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+  import { mapActions } from 'vuex';
   import PostItem from './PostItem.vue';
 
   export default {
@@ -18,24 +20,27 @@
       'post-item': PostItem
     },
 
-    props: {
-      postList: {
-        type: Array,
-        default: function () {
-          return [{
-            id: '123',
-            title: 'test title',
-            subtitle: 'test subtitle',
-            date: new Date(),
-            coverImage: 'dsd'
-          }, {
-            id: '123',
-            title: 'test title',
-            subtitle: 'test subtitle',
-            date: new Date(),
-            coverImage: 'dsd'
-          }];
-        }
+    computed: {
+      ...mapGetters([
+        'postList'
+      ])
+    },
+
+    watch: {
+      '$route': 'fetchData'
+    },
+
+    created () {
+      this.fetchData();
+    },
+
+    methods: {
+      ...mapActions([
+        'getPostList'
+      ]),
+      fetchData () {
+        let pageIndex = this.$route.params.pageIndex;
+        this.getPostList(pageIndex);
       }
     }
   }

@@ -4,12 +4,16 @@
       <h1 class="postDetails__title">{{title}}</h1>
       <h2 v-if="subtitle" class="postDetails__subtitle">{{subtitle}}</h2>
     </header>
+    <div class="postDetails__time">{{releasedAt | MMM_D_YYYY}}</div>
     <article class="postDetails__article markdown-body" v-html="compiledContent"></article>
   </div>
 </template>
 
 <script>
-  import { markdown as markdownFilter } from 'filters/filters';
+  import {
+    markdown as markdownFilter,
+    MMM_D_YYYY
+   } from 'filters/filters';
   import marked from 'marked';
 
   export default {
@@ -46,6 +50,10 @@
           return '';
         }
       }
+    },
+
+    filters: {
+      MMM_D_YYYY
     }
   }
 </script>
