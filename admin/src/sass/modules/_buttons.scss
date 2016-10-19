@@ -1,0 +1,31 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  height: 28px;
+  padding: 7px 15px;
+  border-radius: 4px;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 200;
+  color: #606060;
+  background-color: #fff;
+  outline-style: none;
+
+  &:hover {
+    color: #2dbe60;
+    border-color: #2dbe60;
+  }
+
+  &--primary {
+    @extend .btn;
+    color: #2dbe60;
+    border-color: #2dbe60;
+
+    &:hover {
+      color: #fff;
+      background-color: #2dbe60;
+      border-color: #2dbe60;
+    }
+  }
+}

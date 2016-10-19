@@ -1,7 +1,9 @@
 <template>
   <div class="contentEditor">
     <textarea class="contentEditor__textarea" :value="input" @input="update"></textarea>
-    <div class="contentEditor__preview" v-html="compiledMarkdown"></div>
+    <div class="contentEditor__preview">
+      <div v-html="compiledMarkdown" class="markdown-body"></div>
+    </div>
   </div>
 </template>
 

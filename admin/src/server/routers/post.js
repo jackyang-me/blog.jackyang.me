@@ -23,4 +23,30 @@ postRouter.get('/post/list/:page', function *(next) {
     this.body = {code: 0, data: postList};
 });
 
+postRouter.post('/post/saveDraft', function *(next) {
+  var post = this.request.body;
+  var result = yield postService.saveDraft(post);
+  this.body = {
+    code: 0,
+    data: {
+      id: result.id,
+      createdAt: result.createdAt,
+      updatedAt: result.updatedAt
+    }
+  };
+});
+
+postRouter.post('/post/publish', function *(next) {
+  var post = this.request.body;
+  var result = yield postService.publishPost(post);
+  this.body = {
+    code: 0,
+    data: {
+      id: result.id,
+      createdAt: result.createdAt,
+      updatedAt: result.updatedAt
+    }
+  };
+});
+
 module.exports = postRouter;

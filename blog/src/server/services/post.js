@@ -20,5 +20,5 @@ function getPostSummaryList (pageIndex, pageSize) {
 
 module.exports = {
   getPost: getPost,
-  getPostList: getPostSummaryList
+  getPostSummaryList: getPostSummaryList
 };
