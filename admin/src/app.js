@@ -3,6 +3,7 @@ import Vue from 'vue';
 import VueTouch from 'vue-touch';
 import App from './App.vue';
 import router from './router';
+import store from './vuex/store';
 
 Vue.use(VueTouch);
 
@@ -10,6 +11,7 @@ Vue.use(VueTouch);
 new Vue({
   el: 'body',
   replace: false,
+  store,
   router,
   render: h => h(App)
 });

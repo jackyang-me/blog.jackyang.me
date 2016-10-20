@@ -1,11 +1,31 @@
 <template>
   <div class="postToolbar">
-    <button class="btn--primary">Publish</button>
-    <button class="btn">Save Draft</button>
-    <button class="btn">Expand</button>
+    <button class="btn--primary" @click="handleClickPublish">Publish</button>
+    <button class="btn" @click="handleClickSave">Save Draft</button>
+    <button class="btn" @click="handleClickExpand">Expand</button>
   </div>
 </template>
 
 <script>
-  export default {}
+  import { mapGetters, mapActions } from 'vue';
+  
+  export default {
+    computed: {
+      ...mapGetters([
+        'postList',
+        'selectedPostId'
+      ])
+    }
+    methods: {
+      handleClickExpand () {
+
+      },
+      handleClickSaveDraft () {
+
+      },
+      handleClickPublish () {
+
+      }
+    }
+  }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="postDetailsPanel">
     <post-toolbar></post-toolbar>
-    <post-details></post-details>
+    <post-details :post="post"></post-details>
   </div>
 </template>
 
@@ -10,6 +10,15 @@
   import PostToolbar from './PostToolbar.vue';
 
   export default {
+    props: {
+      post: {
+        type: Object,
+        default () {
+          return {};
+        }
+      }
+    },
+    
     components: {
       'post-toolbar': PostToolbar,
       'post-details': PostDetails

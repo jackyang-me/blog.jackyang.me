@@ -2,10 +2,10 @@ import moment from 'moment';
 
 export function ago (date) {
   var now = new Date();
-  if (moment.duration(now - date).months() < 1) {
+  if (moment.duration(now - date).days() < 1) {
     return moment(date).fromNow();
   } else {
-    return moment(date).format('MMM D, YYYY');
+    return moment(date).format('MMM D, YYYY, HH:m:s');
   }
 }
 

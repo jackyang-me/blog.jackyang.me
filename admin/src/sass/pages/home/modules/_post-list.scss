@@ -6,13 +6,16 @@
   padding: 0 20px;
   background-color: #fff;
   cursor: pointer;
+  border-left: 4px solid #fff;
 
   &.is-selected {
     @extend .postListItem;
-    border: 2px solid #d9d9d9;
+    border-left: 4px solid #2dbe60;
   }
   &:hover {
     background-color: #2dbe60;
+    border-left: 4px solid #2dbe60;
+    
     .postListItem__title {
       color: #fff;
     }

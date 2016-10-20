@@ -1,6 +1,6 @@
 <template>
   <div class="postEditor">
-    <title-editor></title-editor>
+    <title-editor :title="post.title"></title-editor>
     <tags-editor></tags-editor>
     <content-editor></content-editor>
   </div>
@@ -12,6 +12,15 @@
   import ContentEditor from './ContentEditor.vue';
 
   export default {
+    props: {
+      post: {
+        type: Object,
+        default () {
+          return {}
+        }
+      }
+    },
+
     components: {
       'title-editor': TitleEditor,
       'tags-editor': TagsEditor,

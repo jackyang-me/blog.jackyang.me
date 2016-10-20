@@ -1,18 +1,18 @@
 webpackJsonp([1],{
 
-/***/ 60:
+/***/ 206:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	
 	/* styles */
-	__webpack_require__(61)
+	__webpack_require__(207)
 	
 	/* script */
-	__vue_exports__ = __webpack_require__(64)
+	__vue_exports__ = __webpack_require__(210)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(65)
+	var __vue_template__ = __webpack_require__(211)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -24,7 +24,8 @@ webpackJsonp([1],{
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/Jack/Work/blog.jackyang.me/admin/src/components/login/Login.vue"
+	__vue_options__.name = __vue_options__.name || "Login"
+	__vue_options__.__file = "C:\\Users\\Administrator\\Documents\\GitHub\\blog.jackyang.me\\admin\\src\\components\\login\\Login.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 	
@@ -35,9 +36,9 @@ webpackJsonp([1],{
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-5c08cd58", __vue_options__)
+	    hotAPI.createRecord("data-v-51a05a4c", __vue_options__)
 	  } else {
-	    hotAPI.reload("data-v-5c08cd58", __vue_options__)
+	    hotAPI.reload("data-v-51a05a4c", __vue_options__)
 	  }
 	})()}
 	if (__vue_options__.functional) {console.error("[vue-loader] Login.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -47,23 +48,23 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 61:
+/***/ 207:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(62);
+	var content = __webpack_require__(208);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(63)(content, {});
+	var update = __webpack_require__(209)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5c08cd58!./../../../../node_modules/sass-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5c08cd58!./../../../../node_modules/sass-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-51a05a4c!./../../../../node_modules/sass-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-51a05a4c!./../../../../node_modules/sass-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -74,7 +75,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 62:
+/***/ 208:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(10)();
@@ -89,7 +90,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 63:
+/***/ 209:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -312,7 +313,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 64:
+/***/ 210:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -324,7 +325,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 65:
+/***/ 211:
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){with(this) {
@@ -339,7 +340,7 @@ webpackJsonp([1],{
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-5c08cd58", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-51a05a4c", module.exports)
 	  }
 	}
 

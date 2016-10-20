@@ -1,15 +1,34 @@
 <template>
-  <div class="postListItem">
+  <div :class="{'postListItem': true, 'is-selected': selected}">
     <div class="postListItem__inner">
-      <h2 class="postListItem__title">Feedback of the Blog</h2>
-      <h4 class="postListItem__time">A WEEK AGO</h4>
+      <h2 class="postListItem__title">
+        <span v-if="post.status === 'draft'" style="color:lightcoral">[DRAFT]</span>{{post.title}}
+      </h2>
+      <h4 class="postListItem__time">{{new Date(post.releasedAt.iso) | agoFilter}}</h4>
       <div class="postListItem__cover"></div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
+  import { ago as agoFilter } from 'filters/filters';
 
+  export default {
+    props: {
+      post: {
+        type: Object,
+        default: () => {
+          return {};
+        }
+      },
+      selected: {
+        type: Boolean,
+        default: false
+      }
+    },
+
+    filters: {
+      agoFilter
+    }
   };
 </script>

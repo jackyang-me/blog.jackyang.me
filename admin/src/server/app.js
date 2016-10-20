@@ -16,6 +16,12 @@ AV.init({
   appKey: 'g0v4ClWyQtyu8EMQLxQ40xWQ'
 });
 
+AV.User.logIn('ygjack414@hotmail.com', 'ygJack4Blog').then(function (user) {
+  console.log('login user', user);
+}, function (error) {
+  console.log('login error', error);
+});
+
 // error handler
 // must be the 1st middleware
 /*app.use(function *(next) {
