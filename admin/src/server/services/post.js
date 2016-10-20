@@ -1,4 +1,5 @@
 var AV = require('leancloud-storage');
+var moment = require('moment');
 var PostAVObject = AV.Object.extend('Post');
 
 function getPost (id) {
@@ -37,6 +38,16 @@ function publishPost (post) {
   }
 }
 
+function newPost () {
+  var now = new Date();
+  return createPost({
+    title: moment().format('YYYY/MM/DD'),
+    content: 'something you want to share today ...',
+    lastUpdatedAt: now,
+    status: 'draft'
+  });
+}
+
 function createPost (data) {
   var post = new PostAVObject();
 
@@ -51,7 +62,7 @@ function createPost (data) {
   post.set('lastUpdatedAt', data.lastUpdatedAt);
   post.set('status', data.status);
 
-  return postObj.save();
+  return post.save();
 }
 
 function saveDraft (post) {
@@ -93,6 +104,7 @@ function hidePost (id) {
 }
 
 module.exports = {
+  newPost: newPost,
   getPost: getPost,
   getPostSummaryList: getPostSummaryList,
   publishPost: publishPost,

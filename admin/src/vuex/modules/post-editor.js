@@ -1,22 +1,44 @@
+import { getPostDetails, saveDraft, publish } from 'api/post';
+
 export default {
   state: {
     expand: false,
     saving: false,
-    loading: false
+    loading: false,
+    postDetails: null
   },
   mutations: {},
   actions: {
-    saveDraft (store, postId) {
-      console.log('saving draft', store);
+    getPostDetails ({state}, postId) {
+      state.loading = true;
+      getPostDetails(postId).then(response => {
+        state.postDetails = response.data;
+        state.loading = false;
+      });
     },
-    publish (store, postId) {
-      console.log('publishing');
+    saveDraft ({state}) {
+      state.saving = true;
+      saveDraft(state.postDetails).then(response => {
+        state.saving = false;
+      });
+    },
+    publish ({state}) {
+      state.saving = true;
+      publish(state.postDetails).then(response => {
+        state.saving = false;
+      });
     },
     toggleExpand ({state}) {
       state.expand = !state.expand;
+    },
+    editPost ({state}, post) {
+      state.postDetails = post;
     }
   },
   getters: {
+    postDetails: state => {
+      return state.postDetails;
+    },
     expand: state => {
       return state.expand;
     },

@@ -25,6 +25,6 @@ export function saveDraft (post) {
   return postFetch('/post/saveDraft', post);
 }
 
-export function publishPost (post) {
+export function publish (post) {
   return postFetch('/post/publish', post);
 }

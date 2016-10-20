@@ -1,5 +1,6 @@
 var postRouter = require('koa-router')();
 var postService = require('../services/post');
+var moment = require('moment');
 
 postRouter.get('/post/:id', function *(next) {
   var post = yield postService.getPost(this.params.id);
@@ -21,6 +22,14 @@ postRouter.get('/post/list/:page', function *(next) {
 
     postList = yield postService.getPostSummaryList(pageIndex, 20);
     this.body = {code: 0, data: postList};
+});
+
+postRouter.post('/post/new', function *(next) {
+  var result = yield postService.newPost();
+  this.body = {
+    code: 0,
+    data: result
+  };
 });
 
 postRouter.post('/post/saveDraft', function *(next) {

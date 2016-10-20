@@ -1,8 +1,8 @@
 <template>
   <div class="postEditor">
     <title-editor :title="post.title"></title-editor>
-    <tags-editor></tags-editor>
-    <content-editor></content-editor>
+    <tags-editor :tags="post.tags"></tags-editor>
+    <content-editor :content="post.content"></content-editor>
   </div>
 </template>
 
