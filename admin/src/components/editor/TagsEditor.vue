@@ -23,7 +23,7 @@
 
     computed: {
       tagsString () {
-        return this.tags.joined(',');
+        return (this.tags || []).join(',');
       }
     },
 

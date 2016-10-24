@@ -2,6 +2,36 @@ var AV = require('leancloud-storage');
 var moment = require('moment');
 var PostAVObject = AV.Object.extend('Post');
 
+function _update (id, data) {
+  var post = AV.Object.createWithoutData('Post', id);
+  post.set('title', data.title);
+  post.set('subtitle', data.subtitle);
+  post.set('content', data.content);
+  post.set('tags', data.tags);
+  post.set('smallCoverImage', data.smallCoverImage);
+  post.set('coverImage', data.coverImage);
+  post.set('readCount', data.readCount);
+  post.set('releasedAt', data.releasedAt);
+  post.set('lastUpdatedAt', data.lastUpdatedAt);
+  post.set('status', data.status);
+  return post.save();
+}
+
+function _create (data) {
+  var post = new PostAVObject();
+  post.set('title', data.title);
+  post.set('subtitle', data.subtitle);
+  post.set('content', data.content);
+  post.set('tags', data.tags);
+  post.set('smallCoverImage', data.smallCoverImage);
+  post.set('coverImage', data.coverImage);
+  post.set('readCount', data.readCount);
+  post.set('releasedAt', data.releasedAt);
+  post.set('lastUpdatedAt', data.lastUpdatedAt);
+  post.set('status', data.status);
+  return post.save();
+}
+
 function getPost (id) {
   var query = new AV.Query('Post');
   return query.get(id).then(function (post) {
@@ -24,23 +54,9 @@ function getPostSummaryList (pageIndex, pageSize) {
   });
 }
 
-function publishPost (post) {
-  var now = new Date();
-
-  post.status = 'released';
-  post.releasedAt = now;
-  post.lastUpdatedAt = now;
-
-  if (post.id) {
-    return updatePost(post.id, post);
-  } else {
-    return createPost(post);
-  }
-}
-
 function newPost () {
   var now = new Date();
-  return createPost({
+  return _create({
     title: moment().format('YYYY/MM/DD'),
     content: 'something you want to share today ...',
     lastUpdatedAt: now,
@@ -48,47 +64,22 @@ function newPost () {
   });
 }
 
-function createPost (data) {
-  var post = new PostAVObject();
-
-  post.set('title', data.title);
-  post.set('subtitle', data.subtitle);
-  post.set('content', data.content);
-  post.set('tags', data.tags);
-  post.set('smallCoverImage', data.smallCoverImage);
-  post.set('coverImage', data.coverImage);
-  post.set('readCount', data.readCount);
-  post.set('releasedAt', data.releasedAt);
-  post.set('lastUpdatedAt', data.lastUpdatedAt);
-  post.set('status', data.status);
-
-  return post.save();
-}
-
 function saveDraft (post) {
-  post.status = 'draft';
-  if (post.id) {
-    return updatePost(post.id, post);
-  } else {
-    return createPost(post);
-  }
+  return updatePost(post);
 }
 
-function updatePost (id, data) {
-  var post = AV.Object.createWithoutData('Post', id);
+function updatePost (post) {
+  var now = new Date();
+  post.lastUpdatedAt = now;
+  return _update(post.objectId, post);
+}
 
-  post.set('title', data.title);
-  post.set('subtitle', data.subtitle);
-  post.set('content', data.content);
-  post.set('tags', data.tags);
-  post.set('smallCoverImage', data.smallCoverImage);
-  post.set('coverImage', data.coverImage);
-  post.set('readCount', data.readCount);
-  post.set('releasedAt', data.releasedAt);
-  post.set('lastUpdatedAt', data.lastUpdatedAt);
-  post.set('status', data.status);
-
-  return post.save();
+function publishPost (post) {
+  var now = new Date();
+  post.status = 'released';
+  post.releasedAt = now;
+  post.lastUpdatedAt = now;
+  return _update(post.objectId, post);
 }
 
 function deletePost (id) {
@@ -106,10 +97,10 @@ function hidePost (id) {
 module.exports = {
   newPost: newPost,
   getPost: getPost,
-  getPostSummaryList: getPostSummaryList,
-  publishPost: publishPost,
   saveDraft: saveDraft,
   updatePost: updatePost,
+  getPostSummaryList: getPostSummaryList,
+  publishPost: publishPost,
   deletePost: deletePost,
   hidePost: hidePost
 };

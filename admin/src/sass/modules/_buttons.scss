@@ -29,4 +29,16 @@
       border-color: #2dbe60;
     }
   }
+
+  &--warn {
+    @extend .btn;
+    color: #ff6326;
+    border-color: #ff6326;
+
+    &:hover {
+      color: #fff;
+      background-color: #ff6326;
+      border-color: #ff6326;
+    }
+  }
 }

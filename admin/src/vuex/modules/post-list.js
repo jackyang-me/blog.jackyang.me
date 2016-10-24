@@ -1,9 +1,9 @@
-import { getPostList } from 'api/post';
+import { getPostList, newPost } from 'api/post';
 
 export default {
   state: {
     postList: [],
-    selectedPostId: null
+    selectedPostId: ''
   },
   mutations: {},
   actions: {
@@ -14,14 +14,17 @@ export default {
     },
     selectPost ({state}, id) {
       state.selectedPostId = id;
+    },
+    newPost ({state}) {
+      newPost().then(response => {
+        state.postList.unshift(response.data);
+        state.selectedPostId = response.data.objectId;
+      });
     }
   },
   getters: {
-    postList: state => {
-      return state.postList;
-    },
-    selectedPostId: state => {
-      return state.selectedPostId;
+    selectedPostDetails: state => {
+      return state.postList.filter(post => post.objectId === state.selectedPostId)[0];
     }
   }
 };

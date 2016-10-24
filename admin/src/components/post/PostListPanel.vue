@@ -1,7 +1,9 @@
 <template>
   <div class="postListPanel">
     <div class="postListPanel__top">
-      <h1 class="postListPanel__header">POSTS</h1>
+      <h1 class="postListPanel__header">
+        POSTS<button class="btn--primary align-right" @click="newPost">NEW</button>
+      </h1>
       <div class="postListPanel__total">{{postList.length}} posts</div>
     </div>
     <div class="postListPanel__listContainer">
@@ -11,6 +13,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
   import PostList from './PostList.vue';
 
   export default {
@@ -29,6 +32,12 @@
 
     components: {
       'post-list': PostList
+    },
+
+    methods: {
+      ...mapActions([
+        'newPost'
+      ]),
     }
   };
 </script>

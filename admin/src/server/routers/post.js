@@ -32,6 +32,14 @@ postRouter.post('/post/new', function *(next) {
   };
 });
 
+postRouter.post('/post/delete', function *(next) {
+  var result = yield postService.deletePost(this.request.body.id);
+  this.body = {
+    code: 0,
+    data: result
+  };
+});
+
 postRouter.post('/post/saveDraft', function *(next) {
   var post = this.request.body;
   var result = yield postService.saveDraft(post);
@@ -40,6 +48,19 @@ postRouter.post('/post/saveDraft', function *(next) {
     data: {
       id: result.id,
       createdAt: result.createdAt,
+      updatedAt: result.updatedAt
+    }
+  };
+});
+
+postRouter.post('/post/update', function *(next) {
+  var post = this.request.body;
+  var result = yield postService.updatePost(post);
+  this.body = {
+    code: 0,
+    data: {
+      id: result.id,
+      createAt: result.createdAt,
       updatedAt: result.updatedAt
     }
   };

@@ -8,7 +8,6 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
   import { mapActions } from 'vuex';
   import PostListPanel from './PostListPanel.vue';
   import PostDetailsPanel from './PostDetailsPanel.vue';
@@ -20,10 +19,12 @@
     },
 
     computed: {
-      ...mapGetters([
-        'postList',
-        'selectedPostId'
-      ]),
+      postList () {
+        return this.$store.state.postList.postList;
+      },
+      selectedPostId () {
+        return this.$store.state.postList.selectedPostId;
+      },
       selectedPost () {
         return this.postList.filter(post => post.objectId === this.selectedPostId)[0];
       }

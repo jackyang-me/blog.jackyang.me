@@ -21,10 +21,22 @@ export function getPostList (pageIndex) {
   return getFetch('/post/list/' + pageIndex);
 }
 
+export function publishPost (post) {
+  return postFetch('/post/publish', post);
+}
+
+export function newPost () {
+  return postFetch('/post/new');
+}
+
+export function deletePost (id) {
+  return postFetch('/post/delete', {id: id});
+}
+
 export function saveDraft (post) {
   return postFetch('/post/saveDraft', post);
 }
 
-export function publish (post) {
-  return postFetch('/post/publish', post);
+export function updatePost (post) {
+  return postFetch('/post/save', post);
 }
