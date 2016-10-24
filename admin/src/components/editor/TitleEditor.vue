@@ -11,7 +11,7 @@
         type: String,
         default: ''
       },
-      onInput: {
+      inputHandler: {
         type: Function,
         default: null
       }
@@ -19,9 +19,7 @@
 
     methods: {
       handleInput (e) {
-        if (this.onInput) {
-          this.onInput(e.target.value);
-        }
+        this.inputHandler && this.inputHandler(e.target.value);
       }
     }
   };

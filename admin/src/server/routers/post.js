@@ -46,9 +46,7 @@ postRouter.post('/post/saveDraft', function *(next) {
   this.body = {
     code: 0,
     data: {
-      id: result.id,
-      createdAt: result.createdAt,
-      updatedAt: result.updatedAt
+      post: result
     }
   };
 });
@@ -59,9 +57,7 @@ postRouter.post('/post/update', function *(next) {
   this.body = {
     code: 0,
     data: {
-      id: result.id,
-      createAt: result.createdAt,
-      updatedAt: result.updatedAt
+      post: result
     }
   };
 });
@@ -72,9 +68,7 @@ postRouter.post('/post/publish', function *(next) {
   this.body = {
     code: 0,
     data: {
-      id: result.id,
-      createdAt: result.createdAt,
-      updatedAt: result.updatedAt
+      post: result
     }
   };
 });

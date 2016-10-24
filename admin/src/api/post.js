@@ -38,5 +38,5 @@ export function saveDraft (post) {
 }
 
 export function updatePost (post) {
-  return postFetch('/post/save', post);
+  return postFetch('/post/update', post);
 }

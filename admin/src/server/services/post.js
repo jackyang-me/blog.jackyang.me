@@ -45,10 +45,11 @@ function getPostSummaryList (pageIndex, pageSize) {
   query.select([
     'title', 'subtitle', 'releasedAt',
     'smallCoverImage', 'coverImage',
-    'readCount', 'status'
+    'readCount', 'status', 'content', 'tags'
   ]);
   query.limit(pageSize);
   query.skip(pageSize * pageIndex);
+  query.notEqualTo('status', 'deleted');
   return query.find().then(function (results) {
     return results;
   });
