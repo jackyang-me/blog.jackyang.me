@@ -4,7 +4,7 @@
       <h2 class="postListItem__title">
         <span v-if="post.status === 'draft'" style="color:lightcoral">[DRAFT]</span>{{post.title}}
       </h2>
-      <h4 class="postListItem__time">{{new Date(post.releasedAt.iso) | agoFilter}}</h4>
+      <h4 class="postListItem__time" v-if="post.releasedAt">{{new Date(post.releasedAt.iso) | agoFilter}}</h4>
       <div class="postListItem__cover"></div>
     </div>
   </div>

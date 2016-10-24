@@ -13,6 +13,7 @@ function getPostSummaryList (pageIndex, pageSize) {
   query.select(['title', 'subtitle', 'releasedAt', 'smallCoverImage', 'coverImage', 'readCount']);
   query.limit(pageSize);
   query.skip(pageSize * pageIndex);
+  query.equalTo('status', 'released');
   return query.find().then(function (results) {
     return results;
   });

@@ -21,7 +21,7 @@
       handleClickExpand () {
 
       },
-      handleClickSaveDraft () {
+      handleClickSave () {
 
       },
       handleClickPublish () {
