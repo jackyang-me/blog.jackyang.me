@@ -1,7 +1,8 @@
 <template>
   <div class="post">
-    <post-cover v-if="postDetails"
-                image="https://d13yacurqjgara.cloudfront.net/users/31752/screenshots/1458877/events_blog.jpg"></post-cover>
+    <post-cover v-if="postDetails && postDetails.coverImage"
+                :image="postDetails.coverImage"
+                :small-image="postDetails.smallCoverImage"></post-cover>
     <post-details v-if="postDetails"
                   :title="postDetails.title"
                   :subtitle="postDetails.subtitle"
@@ -39,12 +40,18 @@
 
     methods: {
       ...mapActions([
-        'getPostDetails'
+        'getPostDetails',
+        'clearPostDetails'
       ]),
       fetchData () {
         let postId = this.$route.params.id;
         this.getPostDetails(postId);
       }
+    },
+
+    beforeRouteLeave (to, from, next) {
+      this.clearPostDetails();
+      next();
     }
   };
 </script>

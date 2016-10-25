@@ -11,7 +11,7 @@
   <div class="postCover">
     <div class="postCover__mask"></div>
     <!--<img class="postCover__image" :src="image">-->
-    <vue-img-loader :src="image" transition="fade" background-color="lightgrey"></vue-img-loader>
+    <vue-img-loader :src="image" :preview="smallImage" :blur-preview="false" transition="fade" background-color="lightgrey" width="700" height="400"></vue-img-loader>
   </div>
 </template>
 

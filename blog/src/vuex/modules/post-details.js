@@ -11,6 +11,9 @@ export default {
       getPostDetails(postId).then(response => {
         state.postDetails = response.data;
       });
+    },
+    clearPostDetails ({state}) {
+      state.postDetails = null;
     }
   },
   getters: {

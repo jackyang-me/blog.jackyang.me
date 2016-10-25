@@ -2,7 +2,8 @@
   <div class="postItem card">
     <div class="postItem__time">{{date | agoFilter}}</div>
     <div class="postItem__cover--leading" v-if="coverImage" v-touch:tap="goToPostDetails">
-      <img :src="coverImage" alt="">
+      <!--<img :src="coverImage" alt="">-->
+      <vue-img-loader :src="coverImage" :preview="smallCoverImage" :blur-preview="false"></vue-img-loader>
     </div>
     <h3 class="postItem__title--after" v-touch:tap="goToPostDetails">{{title}}</h3>
     <h4 class="postItem__subtitle" v-if="subtitle" v-touch:tap="goToPostDetails">{{subtitle}}</h4>
@@ -11,8 +12,13 @@
 
 <script>
   import { ago as agoFilter } from 'filters/filters';
+  import { VueImgLoader } from 'vue-img-loader';
 
   export default {
+    components: {
+      'vue-img-loader': VueImgLoader
+    },
+
     props: {
       postId: {
         type: String,

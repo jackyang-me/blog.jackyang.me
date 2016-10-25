@@ -21,6 +21,7 @@
     "marked": "^0.3.6",
     "moment": "^2.15.1",
     "normalize.css": "^5.0.0",
+    "qiniu-js": "^1.0.14-beta",
     "simplemde": "^1.11.2",
     "stackblur": "^1.0.0",
     "vue": "^2.0.2",
