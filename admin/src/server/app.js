@@ -5,6 +5,7 @@ var koaLogger = require('koa-logger');
 var log4js = require('log4js');
 var bodyParser = require('koa-bodyparser');
 var postRouter = require('./routers/post');
+var uploadRouter = require('./routers/upload');
 var AV = require('leancloud-storage');
 
 var PORT = 4140;
@@ -58,6 +59,7 @@ app.use(serve(path.resolve(__dirname, '../../dist')));
 
 // routes
 app.use(postRouter.routes());
+app.use(uploadRouter.routes());
 
 app.listen(PORT, function () {
   logger.debug('server is running on port', PORT);
