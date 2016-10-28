@@ -37,9 +37,9 @@ exports.create = function *() {
 exports.postDetails = function *() {
   let postId = this.params.postId
   let query = new AV.Query('Post')
-  let result = yield query.get(postId).catch(err => {
-    this.throw(500, 'get post details failed') // this will end the process of server
-  })
+  let result = yield query.get(postId)/*.catch(err => {
+    // this.throw(500, 'get post details failed') // this will end the process of server
+  })*/
 
   this.status = 200
   this.body = {
