@@ -1,13 +1,17 @@
 var crypto = require('crypto');
-var ACCESS_KEY = 'MY_ACCESS_KEY';
-var SECRET_KEY = 'MY_SECRET_KEY';
+var ACCESS_KEY = '8RflFd93xHYRl6hFMJJ-dMeMaBiJtwfqj6lUt9qy';
+var SECRET_KEY = 'dCd4aLlp4o6SfOuRbuydGiZyin85KLM8-lzvXIge';
 
 function generatePutPolicy (options) {
   return {
-    scope: options.bucket + ':' + options.key,
-    deadline: options.deadline || 3600,
-    returnBody: '{"name":$(fname),"size":$(fsize),"w":$(imageInfo.width),"h":$(imageInfo.height),"hash":$(etag)}'
+    scope: options.key ? options.bucket + ':' + options.key : options.bucket,
+    deadline: getDeadline(options.expiresIn || 1000 * 60 * 60), // 1 hour
+    returnBody: options.returnBody || '{"name":$(fname),"size":$(fsize),"w":$(imageInfo.width),"h":$(imageInfo.height),"hash":$(etag)}'
   };
+}
+
+function getDeadline (expiresIn) {
+  return Math.round((new Date().getTime() + expiresIn) / 1000)
 }
 
 function base64 (value) {
@@ -30,8 +34,10 @@ function generateUptoken (accessKey, secretKey, putPolicyObject) {
 }
 
 module.exports = {
+  getDeadline: getDeadline,
   generatePutPolicy: generatePutPolicy,
   generateUptoken: function (putPolicy) {
+    console.log('putPolicy', putPolicy)
     return generateUptoken(ACCESS_KEY, SECRET_KEY, putPolicy);
   }
 };

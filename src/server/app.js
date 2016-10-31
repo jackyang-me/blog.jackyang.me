@@ -12,6 +12,7 @@ var logger = log4js.getLogger()
 var app = koa()
 
 var postRouter = require('./routers/post')
+var uploadRouter = require('./routers/upload')
 
 AV.init({
   appId: config.AV.appId,
@@ -44,6 +45,7 @@ config.staticPath.forEach(function (staticPath) {
 
 // routes
 app.use(postRouter.routes())
+app.use(uploadRouter.routes())
 
 app.listen(PORT, function () {
   logger.debug('server is running on port', PORT)

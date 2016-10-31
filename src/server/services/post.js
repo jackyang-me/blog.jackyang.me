@@ -52,11 +52,12 @@ exports.postDetails = function *() {
 exports.postList = function *() {
   let pageSize = this.request.query.pageSize || 20
   let pageIndex = this.request.query.pageIndex || 1
+  let summary = this.request.query.summary || false
   let query = new AV.Query('Post')
   let postList = []
 
+  summary && query.select(['title', 'subtitle', 'releasedAt', 'smallCoverImage', 'coverImage', 'readCount'])
   query.descending('releasedAt')
-  query.select(['title', 'subtitle', 'releasedAt', 'smallCoverImage', 'coverImage', 'readCount'])
   query.limit(pageSize)
   query.skip(pageSize * (pageIndex - 1))
   query.equalTo('status', 'released')

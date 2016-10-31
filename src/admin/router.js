@@ -22,6 +22,10 @@ const routes = [{
     path: 'picture',
     component: ''
   }]
+}, {
+  path: '/upload',
+  name: 'upload',
+  component: require('components/pages/Upload.vue')
 }];
 
 const router = new VueRouter({routes})
