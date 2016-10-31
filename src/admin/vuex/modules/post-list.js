@@ -8,7 +8,7 @@ export default {
   mutations: {},
   actions: {
     getPostList ({state}, pageIndex) {
-      getPostList(pageIndex).then(response => {
+      getPostList({pageIndex: pageIndex}).then(response => {
         state.postList = response.data;
       });
     },

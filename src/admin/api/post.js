@@ -1,25 +1,14 @@
-function postFetch (url, request) {
-  return fetch(url, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: 'POST',
-    body: JSON.stringify(request)
-  }).then(response => response.json());
-}
-
-function getFetch (url) {
-  return fetch(url).then(response => response.json());
-}
+import fetch from 'src/fetch'
 
 export function getPostDetails (id) {
-  return getFetch('/post/' + id);
+  return fetch.get(`/posts/${id}`)
 }
 
-export function getPostList (pageIndex) {
-  return getFetch('/post/list/' + pageIndex);
+export function getPostList (params) {
+  return fetch.get('/posts', params)
 }
+
+
 
 export function publishPost (post) {
   return postFetch('/post/publish', post);

@@ -1,7 +1,9 @@
+import fetch from 'src/fetch'
+
 export function getPostDetails (id) {
-  return fetch('/post/' + id).then(response => response.json());
+  return fetch.get(`/posts/${id}`)
 }
 
-export function getPostList (pageIndex) {
-  return fetch('/post/list/' + pageIndex).then(response => response.json());
+export function getPostList (params) {
+  return fetch.get('/posts', params)
 }

@@ -10,12 +10,12 @@
 </template>
 
 <script>
-  import 'sass/pages/home/_home.scss';
-  import SideBar from 'components/side-bar/SideBar.vue';
+  import 'sass/pages/home/_home.scss'
+  import SideBar from 'components/side-bar/SideBar.vue'
 
   export default {
     components: {
       'side-bar': SideBar
     }
-  };
+  }
 </script>

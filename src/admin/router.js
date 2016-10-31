@@ -1,20 +1,20 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [{
   path: '/login',
   name: 'login',
   component: resolve => {
     require.ensure(['components/login/Login.vue'], () => {
-      resolve(require('components/login/Login.vue'));
-    }, 'login');
+      resolve(require('components/login/Login.vue'))
+    }, 'login')
   }
 }, {
   path: '/home',
   name: 'home',
-  component: require('components/home/Home.vue'),
+  component: require('components/pages/Home.vue'),
   children: [{
     path: 'blog',
     component: require('components/post/PostMain.vue')
@@ -24,6 +24,6 @@ const routes = [{
   }]
 }];
 
-const router = new VueRouter({routes});
+const router = new VueRouter({routes})
 
-export default router;
+export default router

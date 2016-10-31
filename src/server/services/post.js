@@ -20,12 +20,12 @@ exports.create = function *() {
   if (validateResult.error) {
     this.throw(400, validateResult.error)
   }
-
   fillModel(post, request, PostModel.fields)
 
   result = yield post.save().catch(err => {
     this.throw(500, 'save post failed')
   })
+
 
   this.status = 200
   this.body = {
@@ -38,6 +38,7 @@ exports.postDetails = function *() {
   let postId = this.params.postId
   let query = new AV.Query('Post')
   let result = yield query.get(postId)/*.catch(err => {
+    console.log('catch it')
     // this.throw(500, 'get post details failed') // this will end the process of server
   })*/
 
@@ -49,11 +50,44 @@ exports.postDetails = function *() {
 }
 
 exports.postList = function *() {
+  let pageSize = this.request.query.pageSize || 20
+  let pageIndex = this.request.query.pageIndex || 1
+  let query = new AV.Query('Post')
+  let postList = []
 
+  query.descending('releasedAt')
+  query.select(['title', 'subtitle', 'releasedAt', 'smallCoverImage', 'coverImage', 'readCount'])
+  query.limit(pageSize)
+  query.skip(pageSize * (pageIndex - 1))
+  query.equalTo('status', 'released')
+
+  postList = yield query.find()
+  this.status = 200
+  this.body = {
+    code: 0,
+    data: postList
+  }
 }
 
 exports.update = function *() {
+ let postId = this.request.params.postId
+ let request = this.body
+ let post = AV.Object.createWithoutData('Post', postId)
+ let result
 
+ validateModel(request, PostModel.fields)
+ if (validateResult.error) {
+   this.throw(400, validateResult.error)
+ }
+ fillModel(post, request, PostModel.fields)
+
+ result = yield post.save()
+
+ this.status = 200
+ this.body = {
+   code: 0,
+   data: result
+ }
 }
 
 exports.partialUpdate = function *() {
@@ -61,24 +95,16 @@ exports.partialUpdate = function *() {
 }
 
 exports.delete = function *() {
+  let postId = this.request.params.postId
+  let post = AV.Object.createWithoutData('Post', postId)
+  let result
 
-}
+  post.set('status', 'deleted')
+  result = yield post.save()
 
-function getPost (id) {
-  var query = new AV.Query('Post');
-  return query.get(id).then(function (post) {
-    return post;
-  });
-}
-
-function getPostSummaryList (pageIndex, pageSize) {
-  var query = new AV.Query('Post');
-  query.descending('releasedAt');
-  query.select(['title', 'subtitle', 'releasedAt', 'smallCoverImage', 'coverImage', 'readCount']);
-  query.limit(pageSize);
-  query.skip(pageSize * pageIndex);
-  query.equalTo('status', 'released');
-  return query.find().then(function (results) {
-    return results;
-  });
+  this.status = 200
+  this.body = {
+    code: 0,
+    data: result
+  }
 }

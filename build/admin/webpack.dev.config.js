@@ -12,7 +12,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       'process.env': config.dev.env
     }),
     new HtmlWebpackPlugin({
-      title: 'Blog', // title is not working for template
+      title: 'Admin', // title is not working for template
       // filename: 'app.html', // default is index html, no matter what's the name of template file
       template: path.join(__dirname, '../../src/admin/index.html'),
       hash: false
