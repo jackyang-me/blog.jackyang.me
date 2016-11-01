@@ -28,7 +28,7 @@
     "moment": "^2.15.1",
     "normalize.css": "^5.0.0",
     "qiniu-js": "^1.0.14-beta",
-    "qiniu-uptoken-generator": "0.0.1",
+    "qiniu-uptoken-generator": "0.1.0",
     "simplemde": "^1.11.2",
     "stackblur": "^1.0.0",
     "urlsafe-base64": "^1.0.0",

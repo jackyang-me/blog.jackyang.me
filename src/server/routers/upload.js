@@ -1,14 +1,6 @@
-var uploadRouter = require('koa-router')();
-var uploadService = require('../services/upload.js');
+var uploadRouter = require('koa-router')()
+var uploadService = require('../services/upload')
 
-uploadRouter.get('/upload/token', function *next() {
-  var policy = uploadService.generatePutPolicy({
-    bucket: 'blog'
-  });
-  var uptoken = uploadService.generateUptoken(policy);
-  this.body = {
-    uptoken: uptoken
-  };
-});
+uploadRouter.get('/upload/token', uploadService.generateUptoken)
 
-module.exports = uploadRouter;
+module.exports = uploadRouter
