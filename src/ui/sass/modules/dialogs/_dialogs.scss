@@ -1,0 +1,29 @@
+@import "vars";
+
+.dialog {
+
+}
+
+.dialog__title {
+
+}
+
+.dialog__content {
+
+}
+
+.dialog__actions {
+
+}
+
+.dialog__overlay {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: $dialog-overlay-opacity;
+  background-color; $dialog-overlay-background-color;
+  z-index: $dialog-overlay-z-index;
+}
