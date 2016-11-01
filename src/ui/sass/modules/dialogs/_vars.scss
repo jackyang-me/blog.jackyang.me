@@ -4,3 +4,16 @@
 $dialog-overlay-opacity: .5 !default;
 $dialog-overlay-background-color: #000 !default;
 $dialog-overlay-z-index: 1000 !default;
+
+// dialog header
+$dialog-header-padding: 24px 24px 0 24px;
+$dialog-header-margin: 0 0 20px 0;
+
+// dialog footer
+$dialog-footer-height: 52px;
+$dialog-footer-line-height: 36px;
+$dialog-footer-padding: 8px 8px 8px 24px;
+
+// dialog body
+$dialog-body-padding: 0 24px 24px 24px;
+$dialog-body-margin: 0 0 24px 0;
