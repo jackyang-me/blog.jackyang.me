@@ -1,6 +1,9 @@
 <template>
   <div id="uploaderFilesContainer">
     <input type="button" id="pickFiles" value="upload">
+    <a class="btn-flat">Flat button</a>
+    <a class="btn-raised">Raised A button</a>
+    <button class="btn-raised">Button Raised</button>
   </div>
 </template>
 

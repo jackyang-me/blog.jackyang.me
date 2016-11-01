@@ -25,7 +25,8 @@ module.exports = {
       'components': path.resolve(projectRoot, 'src/admin/components'),
       'api': path.resolve(projectRoot, 'src/admin/api'),
       'filters': path.resolve(projectRoot, 'src/admin/filters'),
-      'sass': path.resolve(projectRoot, 'src/admin/sass')
+      'sass': path.resolve(projectRoot, 'src/admin/sass'),
+      'ui': path.resolve(projectRoot, 'src/ui')
     }
   },
   resolveLoader: {
