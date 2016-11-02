@@ -4,6 +4,18 @@
     <a class="btn-flat">Flat button</a>
     <a class="btn-raised">Raised A button</a>
     <button class="btn-raised">Button Raised</button>
+    <div class="dialog active">
+      <div class="dialog-header">
+        <h4>this is h4</h4>
+      </div>
+      <div class="dialog-body">
+        <p>Use a modal for dialog boxes, confirmation messages, or other content that can be called up. In order for the modal to work you have to add the Modal ID to the link of the trigger. To add a close button, just add the class .modal-close to your button</p>
+      </div>
+      <div class="dialog-footer">
+        <a class="btn-flat dialog-action">Agree</a>
+        <a class="btn-flat dialog-action">Cancel</a>
+      </div>
+    </div>
   </div>
 </template>
 
