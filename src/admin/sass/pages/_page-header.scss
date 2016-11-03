@@ -1,0 +1,14 @@
+.pageHeader {
+  margin-bottom: 65px;
+  background-color: #3a94e0;
+
+  &__toolbar {
+    @include page-center;
+    padding: 0 24px;
+  }
+
+  &__navbar {
+    @include page-center;
+    margin-top: -20px;
+  }
+}

@@ -1,0 +1,52 @@
+$navbar-height: 48px;
+$navbar-text-color: rgba(255,255,255,.6);
+$navbar-text-highlight-color: #fff;
+$navbar-background-color: #3a94e0;
+
+.navbar {
+  position: relative;
+  display: block;
+  background-color: $navbar-background-color;
+  color: #fff;
+  height: $navbar-height;
+
+  &__navItems {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: $navbar-height;
+  }
+
+  &__navItem {
+    position: relative;
+    float: left;
+    height: $navbar-height;
+    box-sizing: border-box;
+
+    & > a {
+      display: block;
+      padding: 0 24px;
+      height: $navbar-height;
+      line-height: $navbar-height;
+      box-sizing: border-box;
+      color: $navbar-text-color;
+      font-weight: 300;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* todo: 这里的a的状态写法不是很好，感觉有点乱，以后维护可能有问题 */
+    &:hover > a {
+      color: $navbar-text-highlight-color;
+    }
+    &--active {
+      @extend .navbar__navItem;
+      border-bottom: 2px solid #f0f657;
+      & > a {
+        color: $navbar-text-highlight-color;
+      }
+    }
+  }
+}

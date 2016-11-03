@@ -1,0 +1,28 @@
+input {
+  display: inline-block;
+  -webkit-appearance: none;
+  outline: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-weight: 200;
+}
+
+input[type="text"] {
+  border: none;
+  background-color: transparent;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  border: 1px solid #D5D5D5;
+  background: #fff;
+
+  &:checked {
+    border-color: transparent;
+    background-color: #3DC372;
+  }
+}

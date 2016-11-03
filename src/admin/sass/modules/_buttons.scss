@@ -1,44 +1,24 @@
 .btn {
   position: relative;
   display: inline-block;
-  height: 28px;
-  padding: 7px 15px;
-  border-radius: 4px;
-  border: 1px solid #c4c4c4;
+  padding: 0 15px;
+  height: 36px;
+  min-width: 90px;
+  line-height: 36px;
+  background-color: #489be0;
+  color: #fff;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 200;
-  color: #606060;
-  background-color: #fff;
-  outline-style: none;
+  border: none;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 300;
   font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  -webkit-appearance: none;
 
   &:hover {
-    color: #2dbe60;
-    border-color: #2dbe60;
-  }
-
-  &--primary {
-    @extend .btn;
-    color: #2dbe60;
-    border-color: #2dbe60;
-
-    &:hover {
-      color: #fff;
-      background-color: #2dbe60;
-      border-color: #2dbe60;
-    }
-  }
-
-  &--warn {
-    @extend .btn;
-    color: #ff6326;
-    border-color: #ff6326;
-
-    &:hover {
-      color: #fff;
-      background-color: #ff6326;
-      border-color: #ff6326;
-    }
+    background-color: #3a94e0;
   }
 }

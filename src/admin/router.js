@@ -4,28 +4,19 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [{
-  path: '/login',
-  name: 'login',
-  component: resolve => {
-    require.ensure(['components/login/Login.vue'], () => {
-      resolve(require('components/login/Login.vue'))
-    }, 'login')
-  }
-}, {
-  path: '/home',
-  name: 'home',
-  component: require('components/pages/Home.vue'),
+  path: '/blog',
+  name: 'blog',
+  component: require('components/pages/blog/Blog.vue'),
   children: [{
-    path: 'blog',
-    component: require('components/post/PostMain.vue')
+    path: 'post',
+    component: require('components/pages/blog/post/post-list/PostListMain.vue')
   }, {
-    path: 'picture',
-    component: ''
+    path: 'post/edit/:postId',
+    component: require('components/pages/blog/post/post-edit/PostEditMain.vue')
+  }, {
+    path: 'post/new',
+    component: require('components/pages/blog/post/post-edit/PostEditMain.vue')
   }]
-}, {
-  path: '/upload',
-  name: 'upload',
-  component: require('components/pages/Upload.vue')
 }];
 
 const router = new VueRouter({routes})

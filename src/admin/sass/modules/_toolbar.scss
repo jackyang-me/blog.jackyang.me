@@ -1,0 +1,36 @@
+$toolbar-height: 120px;
+$toolbar-background-color: #3a94e0;
+
+.toolbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  height: $toolbar-height;
+  background-color: $toolbar-background-color;
+  color: #fff;
+
+  &__tools {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__actions {
+
+  }
+
+  &__title {
+    font-size: 28px;
+    line-height: 34px;
+    text-transform: none;
+    font-weight: 300;
+  }
+
+  &__search {
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(0,0,0,.2);
+  }
+}
