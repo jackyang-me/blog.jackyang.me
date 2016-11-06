@@ -1,11 +1,11 @@
 <template>
-  <div class="toolbar">
-    <div class="toolbar__tools">
-      <h1 v-if="title" class="toolbar__title">{{title}}</h1>
-      <input v-if="searchHandler" type="text" class="toolbar__search" placeholder="search anything" v-model="searchKey">
+  <div class="u-toolbar">
+    <div class="u-toolbar__tools">
+      <h1 v-if="title" class="u-toolbar__title">{{title}}</h1>
+      <input v-if="searchHandler" type="text" class="u-toolbar__search" placeholder="search anything" v-model="searchKey">
     </div>
-    <div class="toolbar__actions">
-      <button class="btn" v-for="action in actions" @click="handleClickAction(action)">{{action.label}}</button>
+    <div class="u-toolbar__actions">
+      <button class="u-btn" v-for="action in actions" @click="handleClickAction(action)">{{action.label}}</button>
     </div>
   </div>
 </template>

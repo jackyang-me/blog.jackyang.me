@@ -1,0 +1,15 @@
+@import 'text-field';
+@import 'checkbox-field';
+
+.u-formControl {
+  position: relative;
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+  }
+}

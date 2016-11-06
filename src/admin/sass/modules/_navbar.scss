@@ -3,7 +3,7 @@ $navbar-text-color: rgba(255,255,255,.6);
 $navbar-text-highlight-color: #fff;
 $navbar-background-color: #3a94e0;
 
-.navbar {
+.u-navbar {
   position: relative;
   display: block;
   background-color: $navbar-background-color;
@@ -41,8 +41,8 @@ $navbar-background-color: #3a94e0;
     &:hover > a {
       color: $navbar-text-highlight-color;
     }
-    &--active {
-      @extend .navbar__navItem;
+
+    &.is-active {
       border-bottom: 2px solid #f0f657;
       & > a {
         color: $navbar-text-highlight-color;

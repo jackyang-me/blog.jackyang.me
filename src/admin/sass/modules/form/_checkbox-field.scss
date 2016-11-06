@@ -1,0 +1,13 @@
+.u-checkboxField {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  border: 1px solid #D5D5D5;
+  color: #666;
+  background-color: #fff;
+
+  &:checked {
+    border-color: transparent;
+    background-color: #3DC372;
+  }
+}

@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar">
-    <ul class="navbar__navItems">
-      <li v-for="navItem in navItems" :class="{'navbar__navItem': !navItem.active, 'navbar__navItem--active': navItem.active}">
+  <nav class="u-navbar">
+    <ul class="u-navbar__navItems">
+      <li v-for="navItem in navItems" :class="{'u-navbar__navItem': true, 'is-active': navItem.active}">
         <router-link :to="{path: navItem.link}">{{navItem.label}}</router-link>
       </li>
     </ul>

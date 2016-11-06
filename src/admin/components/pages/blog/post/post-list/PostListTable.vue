@@ -1,9 +1,9 @@
 <template>
-  <div class="postList__tableContainer">
-    <table class="postList__table">
+  <div class="c-postList__tableContainer">
+    <table class="c-postList__table">
       <thead>
         <tr>
-          <th class="table__cell--minWidth"><input type="checkbox"></th>
+          <th class="u-table__cell--minWidth"><input type="checkbox" class="u-checkboxField"></th>
           <th>title</th>
           <th>status</th>
           <th>date</th>
@@ -13,8 +13,8 @@
       </thead>
       <tbody>
         <tr v-for="postItem in filteredPostList">
-          <td><input type="checkbox"></td>
-          <td><router-link :to="{path: '/blog/post/edit/123'}" class="link">{{postItem.title}}</router-link></td>
+          <td><input type="checkbox" class="u-checkboxField"></td>
+          <td><router-link :to="{path: '/blog/post/edit/123'}" class="u-link">{{postItem.title}}</router-link></td>
           <td>draft</td>
           <td>date</td>
           <td>0</td>

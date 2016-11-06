@@ -1,0 +1,15 @@
+.u-imageField {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 200px;
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &.has-image {
+
+  }
+}

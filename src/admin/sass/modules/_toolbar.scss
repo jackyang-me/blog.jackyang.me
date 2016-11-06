@@ -1,7 +1,7 @@
 $toolbar-height: 120px;
 $toolbar-background-color: #3a94e0;
 
-.toolbar {
+.u-toolbar {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,9 @@ $toolbar-background-color: #3a94e0;
   }
 
   &__actions {
-
+    .u-btn:not(:last-child) {
+      margin-right: 6px;
+    }
   }
 
   &__title {

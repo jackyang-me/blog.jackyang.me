@@ -1,0 +1,21 @@
+.c-postEditMain {
+  @extend .c-postListMain;
+}
+
+.c-postEdit__toolbar {
+  @extend .c-postList__toolbar;
+}
+
+.c-postEditor {
+  &__title {
+    height: 45px;
+    margin-bottom: 20px;
+    padding: 8px 6px;
+    font-size: 16px;
+  }
+  &__markdown {
+    width: 100%;
+    height: 800px;
+    margin-bottom: 20px;
+  }
+}

@@ -1,7 +1,7 @@
 <template>
-  <header class="pageHeader">
-    <toolbar :title="title" class="pageHeader__toolbar"></toolbar>
-    <navbar :nav-items="navItems" class="pageHeader__navbar"></navbar>
+  <header class="c-pageHeader">
+    <toolbar :title="title" class="c-pageHeader__toolbar"></toolbar>
+    <navbar :nav-items="navItems" class="c-pageHeader__navbar"></navbar>
   </header>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="postListMain">
+  <div class="c-postListMain">
     <post-list-toolbar :title="title" :search-handler="handleSearch"></post-list-toolbar>
     <post-list-table :post-list="postList" :filter-key="filterKey" :selected-post-id="selectedPostId"></post-list-table>
   </div>

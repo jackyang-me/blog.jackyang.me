@@ -1,3 +1,17 @@
-.align-right {
-  float: right;
+.l-view {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &__content {
+    position: relative;
+    flex: 1;
+  }
+  &__sidebar {
+    position: relative;
+    display: block;
+    width: 290px;
+    margin-left: 40px;
+  }
 }

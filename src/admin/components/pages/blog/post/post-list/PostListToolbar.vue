@@ -1,5 +1,5 @@
 <template>
-  <toolbar class="postList__toolbar" :title="total + ' Post'" :actions="toolbarActions" :search-handler="handleSearch"></toolbar>
+  <toolbar class="c-postList__toolbar" :title="total + ' Post'" :actions="toolbarActions" :search-handler="handleSearch"></toolbar>
 </template>
 
 <script>

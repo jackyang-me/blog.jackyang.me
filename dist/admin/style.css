@@ -412,7 +412,8 @@ template {
 html, body {
   width: 100%;
   position: relative;
-  background-color: #f9f9fb; }
+  background-color: #f9f9fb;
+  color: #666; }
 
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, blockquote, p {
   padding: 0;
@@ -473,7 +474,7 @@ a:active, a:hover {
   src: url(static/fonts/Roboto-Bold.ecdd509.eot?#iefix) format("embedded-opentype"), url(static/fonts/Roboto-Bold.39b2c30.woff2) format("woff2"), url(static/fonts/Roboto-Bold.dc81817.woff) format("woff"), url(static/fonts/Roboto-Bold.e31fcf1.ttf) format("truetype");
   font-weight: 700; }
 
-.btn {
+.u-btn {
   position: relative;
   display: inline-block;
   padding: 0 15px;
@@ -492,28 +493,28 @@ a:active, a:hover {
   text-align: center;
   text-decoration: none;
   -webkit-appearance: none; }
-  .btn:hover {
+  .u-btn:hover {
     background-color: #3a94e0; }
 
-.navbar {
+.u-navbar {
   position: relative;
   display: block;
   background-color: #3a94e0;
   color: #fff;
   height: 48px; }
-  .navbar__navItems {
+  .u-navbar__navItems {
     display: inline-block;
     list-style: none;
     margin: 0;
     padding: 0;
     height: 48px; }
-  .navbar__navItem, .navbar__navItem--active {
+  .u-navbar__navItem {
     position: relative;
     float: left;
     height: 48px;
     box-sizing: border-box;
     /* todo: 这里的a的状态写法不是很好，感觉有点乱，以后维护可能有问题 */ }
-    .navbar__navItem > a, .navbar__navItem--active > a {
+    .u-navbar__navItem > a {
       display: block;
       padding: 0 24px;
       height: 48px;
@@ -524,14 +525,14 @@ a:active, a:hover {
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 1px; }
-    .navbar__navItem:hover > a, .navbar__navItem--active:hover > a {
+    .u-navbar__navItem:hover > a {
       color: #fff; }
-    .navbar__navItem--active {
+    .u-navbar__navItem.is-active {
       border-bottom: 2px solid #f0f657; }
-      .navbar__navItem--active > a {
+      .u-navbar__navItem.is-active > a {
         color: #fff; }
 
-.toolbar {
+.u-toolbar {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -541,15 +542,17 @@ a:active, a:hover {
   height: 120px;
   background-color: #3a94e0;
   color: #fff; }
-  .toolbar__tools {
+  .u-toolbar__tools {
     display: flex;
     flex-direction: row; }
-  .toolbar__title {
+  .u-toolbar__actions .u-btn:not(:last-child) {
+    margin-right: 6px; }
+  .u-toolbar__title {
     font-size: 28px;
     line-height: 34px;
     text-transform: none;
     font-weight: 300; }
-  .toolbar__search {
+  .u-toolbar__search {
     margin-left: 20px;
     padding-left: 20px;
     border-left: 1px solid rgba(0, 0, 0, 0.2); }
@@ -578,65 +581,105 @@ td {
   padding: 16px 12px;
   color: #666; }
 
-.table__cell--minWidth {
+.u-table__cell--minWidth {
   width: 1px; }
 
-.link, .router-link-active {
+.u-link, .router-link-active {
   color: #4091D2;
   text-decoration: none;
   cursor: pointer; }
 
-input {
+.u-textField, .u-textField--block {
   display: inline-block;
-  -webkit-appearance: none;
-  outline: 0;
-  overflow: hidden;
+  padding: 4px 6px;
+  height: 35px;
+  line-height: 35px;
+  max-width: 100%;
+  border: 1px solid #e5e5e5;
   border-radius: 2px;
-  box-sizing: border-box;
   font-family: inherit;
-  font-weight: 200; }
+  color: #666;
+  background-color: #fff;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  transition: all .2s ease; }
+  .u-textField:focus, .u-textField--block:focus {
+    border-color: #489be0;
+    outline: 0; }
+  .u-textField--block {
+    display: block;
+    width: 100%; }
 
-input[type="text"] {
-  border: none;
-  background-color: transparent; }
+.u-textFormControl {
+  position: relative;
+  margin-bottom: 20px; }
+  .u-textFormControl label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase; }
 
-input[type="checkbox"] {
+.u-checkboxField {
   cursor: pointer;
   height: 16px;
   width: 16px;
   border: 1px solid #D5D5D5;
-  background: #fff; }
-  input[type="checkbox"]:checked {
+  color: #666;
+  background-color: #fff; }
+  .u-checkboxField:checked {
     border-color: transparent;
     background-color: #3DC372; }
 
-.pageHeader {
+.c-pageHeader {
   margin-bottom: 65px;
   background-color: #3a94e0; }
-  .pageHeader__toolbar {
+  .c-pageHeader__toolbar {
     max-width: 1320px;
     margin: 0 auto;
     padding: 0 24px; }
-  .pageHeader__navbar {
+  .c-pageHeader__navbar {
     max-width: 1320px;
     margin: 0 auto;
     margin-top: -20px; }
 
-.pageMain {
+.c-pageMain {
   max-width: 1320px;
   margin: 0 auto;
   margin-bottom: 25px; }
 
-.postListMain {
+.c-postListMain, .c-postEditMain {
   position: relative;
   display: block;
   padding: 0 20px; }
 
-.postList__toolbar {
+.c-postList__toolbar, .c-postEdit__toolbar {
   background-color: transparent;
   height: 36px;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.6); }
 
-.align-right {
-  float: right; }
+.c-postEditor__title {
+  height: 45px;
+  margin-bottom: 20px;
+  padding: 8px 6px;
+  font-size: 16px; }
+
+.c-postEditor__markdown {
+  width: 100%;
+  height: 800px;
+  margin-bottom: 20px; }
+
+.l-view {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .l-view__content {
+    position: relative;
+    flex: 1; }
+  .l-view__sidebar {
+    position: relative;
+    display: block;
+    width: 290px;
+    margin-left: 40px; }

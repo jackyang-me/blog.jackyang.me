@@ -1,9 +1,9 @@
-.link {
+.u-link {
   color: #4091D2;
   text-decoration: none;
   cursor: pointer;
 }
 
 .router-link-active {
-  @extend .link;
+  @extend .u-link;
 }
