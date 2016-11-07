@@ -1,22 +1,26 @@
 <template>
   <div class="c-postEditor">
     <input type="text" class="u-textField--block c-postEditor__title" placeholder="post title">
-    <mardown-editor class="c-postEditor__markdown" @change="handleEditorChange"></markdown-editor>
+    <markdown-field class="c-postEditor__markdown" @change="handlePostChange"></markdown-field>
+    <markdown-field label="except" @change="handleExceptChange"></markdown-field>
   </div>
 </template>
 
 <script>
   import _ from 'lodash'
-  import MardownEditor from 'components/common/MardownEditor.vue'
+  import MarkdownField from 'components/common/form/MarkdownField.vue'
 
   export default {
     components: {
-      'mardown-editor': MardownEditor
+      'markdown-field': MarkdownField
     },
 
     methods: {
-      handleEditorChange: _.debounce(function (value) {
+      handlePostChange: _.debounce(function (value) {
         console.log('editor change', value)
+      }, 300),
+      handleExceptChange: _.debounce(function (value) {
+        console.log('except change', value)
       }, 300)
     }
   }

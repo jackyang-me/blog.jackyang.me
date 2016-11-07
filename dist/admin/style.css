@@ -1675,7 +1675,8 @@ td {
   width: 100%;
   min-height: 400px;
   margin-bottom: 20px;
-  font-size: 14px; }
+  font-size: 14px;
+  line-height: 1.6; }
 
 .l-view {
   position: relative;
