@@ -589,7 +589,7 @@ td {
   text-decoration: none;
   cursor: pointer; }
 
-.u-textField, .u-textField--block {
+.u-textField, .u-toolbar__search, .u-textField--block {
   display: inline-block;
   padding: 4px 6px;
   height: 35px;
@@ -603,22 +603,12 @@ td {
   box-sizing: border-box;
   -webkit-appearance: none;
   transition: all .2s ease; }
-  .u-textField:focus, .u-textField--block:focus {
+  .u-textField:focus, .u-toolbar__search:focus, .u-textField--block:focus {
     border-color: #489be0;
     outline: 0; }
   .u-textField--block {
     display: block;
     width: 100%; }
-
-.u-textFormControl {
-  position: relative;
-  margin-bottom: 20px; }
-  .u-textFormControl label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 12px;
-    line-height: 18px;
-    text-transform: uppercase; }
 
 .u-checkboxField {
   cursor: pointer;
@@ -630,6 +620,69 @@ td {
   .u-checkboxField:checked {
     border-color: transparent;
     background-color: #3DC372; }
+
+.u-imageField, .u-imageField--block {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 200px;
+  overflow: hidden; }
+  .u-imageField--block {
+    display: block;
+    width: 100%; }
+  .u-imageField__placeholder {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 1px dashed #e5e5e5;
+    cursor: pointer; }
+    .u-imageField__placeholderImage {
+      width: 60px;
+      height: 60px; }
+    .u-imageField__placeholderText {
+      color: #aaa; }
+  .u-imageField__panel {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: all .2s ease;
+    z-index: 2; }
+    .u-imageField:hover .u-imageField__panel, .u-imageField--block:hover .u-imageField__panel {
+      display: block; }
+  .u-imageField__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1; }
+  .u-imageField__delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer; }
+
+.u-formControl {
+  position: relative;
+  margin-bottom: 20px; }
+  .u-formControl label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase; }
 
 .c-pageHeader {
   margin-bottom: 65px;

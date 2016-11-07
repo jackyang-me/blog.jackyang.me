@@ -1,16 +1,31 @@
 <template>
   <div>
-    <div class="u-formControl">
-      <label>cover</label>
-      <input type="text" class="u-imageField--block">
-    </div>
-    <div class="u-formControl">
-      <label></label>
-      <input type="text" class="u-textField--block">
-    </div>
+    <image-field label="cover" title="cover" :block="true" :image="coverImage"></image-field>
+    <text-field label="tags" :value="tags" @input="handleInputTags" :block="true"></text-field>
   </div>
 </template>
 
 <script>
-  export default {}
+  import TextField from 'components/common/form/TextField.vue'
+  import ImageField from 'components/common/form/ImageField.vue'
+
+  export default {
+    components: {
+      'text-field': TextField,
+      'image-field': ImageField
+    },
+
+    data () {
+      return {
+        tags: 'js, html',
+        coverImage: 'http://vuejs.org/images/logo.png'
+      }
+    },
+
+    methods: {
+      handleInputTags (value) {
+        this.tags = value
+      }
+    }
+  }
 </script>

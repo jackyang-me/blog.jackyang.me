@@ -3,13 +3,67 @@
   display: inline-block;
   width: 250px;
   height: 200px;
+  overflow: hidden;
 
   &--block {
+    @extend .u-imageField;
     display: block;
     width: 100%;
   }
 
-  &.has-image {
+  &__placeholder {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 1px dashed #e5e5e5;
+    cursor: pointer;
 
+    &Image {
+      width: 60px;
+      height: 60px;
+    }
+    &Text {
+      color: #aaa;
+    }
+  }
+
+  &__panel {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,.4);
+    transition: all .2s ease;
+    z-index: 2;
+
+    .u-imageField:hover & {
+      display: block;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
   }
 }

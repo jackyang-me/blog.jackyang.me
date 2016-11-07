@@ -31,6 +31,7 @@ $toolbar-background-color: #3a94e0;
   }
 
   &__search {
+    @extend .u-textField;
     margin-left: 20px;
     padding-left: 20px;
     border-left: 1px solid rgba(0,0,0,.2);
