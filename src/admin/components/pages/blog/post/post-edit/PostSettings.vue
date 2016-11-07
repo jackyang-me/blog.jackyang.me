@@ -2,6 +2,7 @@
   <div>
     <image-field label="cover" title="cover" :block="true" :image="coverImage"></image-field>
     <text-field label="tags" :value="tags" @input="handleInputTags" :block="true"></text-field>
+    <text-field label="status" value="draft"></text-field>
   </div>
 </template>
 

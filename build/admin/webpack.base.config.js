@@ -16,6 +16,9 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].chunk.js'
   },
+  node: {
+    fs: "empty"
+  },
   resolve: {
     extensions: ['', '.js', '.vue'],
     fallback: [path.join(projectRoot, 'node_modules')],

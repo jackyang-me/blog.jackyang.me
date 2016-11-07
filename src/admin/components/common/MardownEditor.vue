@@ -1,7 +1,16 @@
 <template>
-  <div>mardown editor</div>
+  <div>
+    <textarea ref:textarea></textarea>
+  </div>
 </template>
 
 <script>
-  export default {}
+  import SimpleMDE from 'simplemde'
+  let editor;
+
+  export default {
+    mounted () {
+      editor = new SimpleMDE({element: this.$refs.textarea})
+    }
+  }
 </script>
