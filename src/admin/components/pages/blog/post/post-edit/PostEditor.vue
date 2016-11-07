@@ -2,7 +2,7 @@
   <div class="c-postEditor">
     <input type="text" class="u-textField--block c-postEditor__title" placeholder="post title">
     <markdown-field class="c-postEditor__markdown" @change="handlePostChange"></markdown-field>
-    <markdown-field label="except" @change="handleExceptChange"></markdown-field>
+    <!--<markdown-field label="except" @change="handleExceptChange"></markdown-field>-->
   </div>
 </template>
 

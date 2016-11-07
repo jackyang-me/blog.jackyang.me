@@ -1,0 +1,28 @@
+$u-progress-height: 4px;
+
+.u-progress {
+  margin-bottom: 20px;
+
+  &__label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+  }
+  &__background {
+    position: relative;
+    width: 100%;
+    height: $u-progress-height;
+    background-color: #e5e5e5;
+  }
+  &__bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #489be0;
+    will-change: width;
+    transition: width .1s linear;
+  }
+}

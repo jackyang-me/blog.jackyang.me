@@ -3,6 +3,7 @@
     <page-header :title="title" :nav-items="navItems"></page-header>
     <page-main></page-main>
     <page-footer></page-footer>
+    <upload-progress-modal progress="80"></upload-progress-modal>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
   import PageHeader from 'components/common/PageHeader.vue'
   import PageMain from 'components/common/PageMain.vue'
   import PageFooter from 'components/common/PageFooter.vue'
+  import UploadProgressModal from 'components/upload/UploadProgressModal.vue'
 
   export default {
     components: {
       'page-header': PageHeader,
       'page-main': PageMain,
-      'page-footer': PageFooter
+      'page-footer': PageFooter,
+      'upload-progress-modal': UploadProgressModal
     },
 
     data () {

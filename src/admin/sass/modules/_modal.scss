@@ -1,0 +1,24 @@
+.u-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(245,245,245,.5);
+
+  &__dialog {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 600px;
+    max-width: 90%;
+    padding: 40px;
+    margin: 50px auto;
+    background-color: #f9f9fb;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+}

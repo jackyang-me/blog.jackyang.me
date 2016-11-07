@@ -11,6 +11,7 @@ var PORT = config.port
 var logger = log4js.getLogger()
 var app = koa()
 
+var adminRouter = require('./routers/admin')
 var postRouter = require('./routers/post')
 var uploadRouter = require('./routers/upload')
 
@@ -44,6 +45,7 @@ config.staticPath.forEach(function (staticPath) {
 })
 
 // routes
+app.use(adminRouter.routes())
 app.use(postRouter.routes())
 app.use(uploadRouter.routes())
 
