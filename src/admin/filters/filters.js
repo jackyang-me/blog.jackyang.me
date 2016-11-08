@@ -14,9 +14,5 @@ export function MMM_D_YYYY (date) {
 }
 
 export function iso (date) {
-  if (typeof iso === 'object') {
-    return new Date(date.iso)
-  } else {
-    return new Date(date)
-  }
+  return date.iso ? new Date(date.iso) : new Date(date)
 }
