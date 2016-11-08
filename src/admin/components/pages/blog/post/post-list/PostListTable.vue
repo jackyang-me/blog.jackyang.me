@@ -14,7 +14,7 @@
       <tbody>
         <tr v-for="postItem in filteredPostList">
           <td><input type="checkbox" class="u-checkboxField"></td>
-          <td><router-link :to="{path: '/blog/post/edit/123'}" class="u-link">{{postItem.title}}</router-link></td>
+          <td><router-link :to="{path: '/blog/post/edit/' + postItem.objectId}" class="u-link">{{postItem.title}}</router-link></td>
           <td>draft</td>
           <td>date</td>
           <td>0</td>

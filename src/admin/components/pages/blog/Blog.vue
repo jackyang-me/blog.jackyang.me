@@ -3,7 +3,7 @@
     <page-header :title="title" :nav-items="navItems"></page-header>
     <page-main></page-main>
     <page-footer></page-footer>
-    <upload-progress-modal progress="80"></upload-progress-modal>
+    <!--<upload-progress-modal progress="80"></upload-progress-modal>-->
   </div>
 </template>
 

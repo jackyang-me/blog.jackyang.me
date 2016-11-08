@@ -1,6 +1,6 @@
 <template>
   <div class="c-postEditor">
-    <input type="text" class="u-textField--block c-postEditor__title" placeholder="post title">
+    <input type="text" class="u-textField--block c-postEditor__title" placeholder="post title" v-model="localTitle">
     <markdown-field class="c-postEditor__markdown" @change="handlePostChange"></markdown-field>
     <!--<markdown-field label="except" @change="handleExceptChange"></markdown-field>-->
   </div>
@@ -13,6 +13,26 @@
   export default {
     components: {
       'markdown-field': MarkdownField
+    },
+
+    props: {
+      title: String,
+      content: String
+    },
+
+    data () {
+      return {
+        localTitle: this.title
+      }
+    },
+
+    watch: {
+      title (value) {
+        this.localTitle = value
+      },
+      localTitle (value) {
+
+      }
     },
 
     methods: {

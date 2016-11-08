@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import { mapActions, mapState } from 'vuex'
   import PostEditToolbar from './PostEditToolbar.vue'
   import PostEditor from './PostEditor.vue'
   import PostSettings from './PostSettings.vue'
@@ -22,6 +23,29 @@
       'post-edit-toolbar': PostEditToolbar,
       'post-editor': PostEditor,
       'post-settings': PostSettings
+    },
+
+    created () {
+      this.fetchData()
+    },
+
+    computed: {
+      ...mapState({
+        postDetails: state => state.blog.post.postEdit.postDetails
+      })
+    },
+
+    watch: {
+      '$route': 'fetchData'
+    },
+
+    methods: {
+      ...mapActions([
+        'getPostDetails'
+      ]),
+      fetchData () {
+        this.getPostDetails(this.$route.params.postId)
+      }
     }
   }
 </script>
