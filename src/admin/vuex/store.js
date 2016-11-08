@@ -1,13 +1,11 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import postList from './modules/post-list';
-import postEditor from './modules/post-editor';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import blog from './modules/blog'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default window.store = new Vuex.Store({
   modules: {
-    postList: postList,
-    postEditor: postEditor
+    blog
   }
-});
+})

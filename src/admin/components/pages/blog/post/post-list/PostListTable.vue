@@ -38,7 +38,7 @@
         type: String,
         default: ''
       },
-      selectedPostId: {
+      selectedPostIds: {
         type: Array,
         default () {
           return []

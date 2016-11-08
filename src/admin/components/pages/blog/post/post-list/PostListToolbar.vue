@@ -1,5 +1,5 @@
 <template>
-  <toolbar class="c-postList__toolbar" :title="total + ' Post'" :actions="toolbarActions" :search-handler="handleSearch"></toolbar>
+  <toolbar class="c-postList__toolbar" :title="total + ' Post'" :search-key="searchKey" :actions="toolbarActions" :search-handler="handleSearch"></toolbar>
 </template>
 
 <script>
@@ -11,10 +11,8 @@
     },
 
     props: {
-      title: {
-        type: String,
-        default: ''
-      },
+      title: String,
+      searchKey: String,
       searchHandler: {
         type: Function,
         default: null

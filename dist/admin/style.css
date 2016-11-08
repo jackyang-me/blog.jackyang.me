@@ -1569,7 +1569,8 @@ td {
   width: 16px;
   border: 1px solid #D5D5D5;
   color: #666;
-  background-color: #fff; }
+  background-color: #fff;
+  -webkit-appearance: none; }
   .u-checkboxField:checked {
     border-color: transparent;
     background-color: #3DC372; }

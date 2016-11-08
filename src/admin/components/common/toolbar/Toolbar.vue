@@ -2,7 +2,7 @@
   <div class="u-toolbar">
     <div class="u-toolbar__tools">
       <h1 v-if="title" class="u-toolbar__title">{{title}}</h1>
-      <input v-if="searchHandler" type="text" class="u-toolbar__search" placeholder="search anything" v-model="searchKey">
+      <input v-if="searchHandler" type="text" class="u-toolbar__search" placeholder="search anything" v-model="localSearchKey">
     </div>
     <div class="u-toolbar__actions">
       <button class="u-btn" v-for="action in actions" @click="handleClickAction(action)">{{action.label}}</button>
@@ -13,10 +13,8 @@
 <script>
   export default {
     props: {
-      title: {
-        type: String,
-        default: ''
-      },
+      title: String,
+      searchKey: String,
       actions: {
         type: Array, // [{label: '', handler}]
         default () {
@@ -31,12 +29,15 @@
 
     data () {
       return {
-        searchKey: ''
+        localSearchKey: this.searchKey
       }
     },
 
     watch: {
       searchKey (value) {
+        this.localSearchKey = value
+      },
+      localSearchKey (value) {
         this.searchHandler && this.searchHandler(value);
       }
     },
