@@ -15,8 +15,8 @@
         <tr v-for="postItem in filteredPostList">
           <td><input type="checkbox" class="u-checkboxField"></td>
           <td><router-link :to="{path: '/blog/post/edit/' + postItem.objectId}" class="u-link">{{postItem.title}}</router-link></td>
-          <td>draft</td>
-          <td>date</td>
+          <td>{{postItem.status}}</td>
+          <td>{{postItem.releasedAt | iso}}</td>
           <td>0</td>
           <td>10</td>
         </tr>
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+  import { iso } from 'filters/filters'
+
   export default {
     props: {
       postList: {
@@ -54,6 +56,10 @@
           return this.postList.filter((post) => post.title.indexOf(this.filterKey) !== -1)
         }
       }
+    },
+
+    filters: {
+      iso
     }
   }
 </script>

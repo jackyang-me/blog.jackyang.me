@@ -23,12 +23,21 @@
       this.$options.editor = null
     },
 
+    watch: {
+      value (value) {
+        if (this.$options.editor) {
+          this.$options.editor.value(value)
+        }
+        this.$emit('change', value)
+      }
+    },
+
     methods: {
       initEditor () {
-        let editor = this.$options.editor
+        let editor = null
         let that = this
 
-        editor = new SimpleMDE({
+        editor = this.$options.editor = new SimpleMDE({
           element: this.$refs.textarea,
           previewRender (plainText, preview) {
             preview.classList.add('markdown-body')
@@ -108,7 +117,7 @@
         })
 
         editor.codemirror.on('change', () => {
-          this.$emit('change', editor.value())
+          this.localValue = editor.value()
         })
 
         editor.value(this.value)

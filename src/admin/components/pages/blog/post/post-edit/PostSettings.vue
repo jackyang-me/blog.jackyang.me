@@ -7,8 +7,8 @@
                 @uploadprogress="handleUploadProgress"
                 @uploadcomplete="handleUploadComplete"
                 @uploaderror="handleUploadError"></image-field>
-    <text-field label="tags" :value="tags" @input="handleInputTags" :block="true"></text-field>
-    <text-field label="status" value="draft" :block="true"></text-field>
+    <text-field label="tags" :value="tagsString" @input="handleInputTags" :block="true"></text-field>
+    <text-field label="status" :value="localStatus" :block="true"></text-field>
   </div>
 </template>
 
@@ -22,16 +22,55 @@
       'image-field': ImageField
     },
 
+    props: {
+      coverImage: String,
+      status: String,
+      tags: {
+        type: Array,
+        default () {
+          return []
+        }
+      }
+    },
+
     data () {
       return {
-        tags: 'js, html',
-        coverImage: 'http://vuejs.org/images/logo.png'
+        localStatus: this.status,
+        localCoverImage: this.coverImage,
+        localTags: this.tags
+      }
+    },
+
+    computed: {
+      tagsString () {
+        return this.localTags.join(', ')
+      }
+    },
+
+    watch: {
+      coverImage (value) {
+        this.localCoverImage = value
+      },
+      localCoverImage (value) {
+        this.$emit('changecover', value)
+      },
+      status (value) {
+        this.localStatus = value
+      },
+      localStatus (value) {
+        this.$emit('changestatus', value)
+      },
+      tags (value) {
+        this.localTags = value
+      },
+      localTags (value) {
+        this.$emit('changetags', value)
       }
     },
 
     methods: {
       handleInputTags (value) {
-        this.tags = value
+        this.localTags = value.split(/,[\s]*/)
       },
       handleUploadStart () {
         console.log('start upload, show progress modal')
@@ -41,6 +80,7 @@
       },
       handleUploadComplete (imageUrl) {
         console.log('uploaded, close modal', imageUrl)
+        this.localCoverImage = imageUrl
       },
       handleUploadError (error) {
         alert('upload image error')

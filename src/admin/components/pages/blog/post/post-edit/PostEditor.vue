@@ -1,7 +1,7 @@
 <template>
   <div class="c-postEditor">
-    <input type="text" class="u-textField--block c-postEditor__title" placeholder="post title" v-model="localTitle">
-    <markdown-field class="c-postEditor__markdown" @change="handlePostChange"></markdown-field>
+    <input type="text" class="u-textField--block c-postEditor__title" placeholder="post title" :value="localTitle" @input="handleInputTitle">
+    <markdown-field class="c-postEditor__markdown" :value="localContent" @change="handlePostChange"></markdown-field>
     <!--<markdown-field label="except" @change="handleExceptChange"></markdown-field>-->
   </div>
 </template>
@@ -22,7 +22,8 @@
 
     data () {
       return {
-        localTitle: this.title
+        localTitle: this.title,
+        localContent: this.content
       }
     },
 
@@ -31,16 +32,24 @@
         this.localTitle = value
       },
       localTitle (value) {
-
+        this.$emit('changetitle', value)
+      },
+      content (value) {
+        this.localContent = value
+      },
+      localContent (value) {
+        this.$emit('changecontent', value)
       }
     },
 
     methods: {
+      handleInputTitle (e) {
+        this.localTitle = e.target.value
+      },
       handlePostChange: _.debounce(function (value) {
-        console.log('editor change', value)
+        this.localContent = value
       }, 300),
       handleExceptChange: _.debounce(function (value) {
-        console.log('except change', value)
       }, 300)
     }
   }

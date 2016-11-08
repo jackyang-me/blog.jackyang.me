@@ -3,10 +3,18 @@
     <post-edit-toolbar></post-edit-toolbar>
     <div class="l-view">
       <div class="l-view__content">
-        <post-editor></post-editor>
+        <post-editor :content="postDetails.content"
+                     :title="postDetails.title"
+                     @changetitle="changePostTitle"
+                     @changecontent="changePostContent"></post-editor>
       </div>
       <div class="l-view__sidebar">
-        <post-settings></post-settings>
+        <post-settings :cover-image="postDetails.coverImage"
+                       :status="postDetails.status"
+                       :tags="postDetails.tags"
+                       @changecover="changePostCover"
+                       @changestatus="changePostStatus"
+                       @changetags="changePostTags"></post-settings>
       </div>
     </div>
   </div>
@@ -31,7 +39,7 @@
 
     computed: {
       ...mapState({
-        postDetails: state => state.blog.post.postEdit.postDetails
+        postDetails: state => state.blog.post.postEdit.postDetails || {}
       })
     },
 
@@ -41,7 +49,12 @@
 
     methods: {
       ...mapActions([
-        'getPostDetails'
+        'getPostDetails',
+        'changePostTitle',
+        'changePostContent',
+        'changePostCover',
+        'changePostStatus',
+        'changePostTags'
       ]),
       fetchData () {
         this.getPostDetails(this.$route.params.postId)

@@ -39,7 +39,7 @@
         if (selected === 0) {
           return length > 1 ? length + ' Posts' : length + ' Post'
         } else {
-          return selected + ' Posts selected'
+          return selected > 1 ? selected + ' Posts selected' : selected + ' Posts selected'
         }
       }
     },
