@@ -59,6 +59,8 @@ const actions = {
     } else {
       postAPI.createPost(postDetails).then(response => {
         commit(type.BLOG_CHANGE_POST, { postDetails: response.data })
+      }).catch(error => {
+        alert(error.errorMessage)
       })
     }
   },

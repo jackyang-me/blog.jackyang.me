@@ -1,6 +1,6 @@
 <template>
   <div class="postItem card">
-    <div class="postItem__time">{{date | agoFilter}}</div>
+    <div class="postItem__time">{{date | iso | ago}}</div>
     <div class="postItem__cover--leading" v-if="coverImage" v-touch:tap="goToPostDetails">
       <!--<img :src="coverImage" alt="">-->
       <vue-img-loader :src="coverImage" :preview="smallCoverImage" :blur-preview="false"></vue-img-loader>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { ago as agoFilter } from 'filters/filters';
+  import { iso, ago, qiniuTinyImage } from 'filters/filters';
   import { VueImgLoader } from 'vue-img-loader';
 
   export default {
@@ -34,21 +34,24 @@
         type: String,
         default: ''
       },
-      smallCoverImage: {
-        type: String,
-        default: ''
-      },
       coverImage: {
         type: String,
         default: ''
       },
       date: {
-        type: Date
+        type: [Object, Date]
+      }
+    },
+
+    computed: {
+      smallCoverImage () {
+        return qiniuTinyImage(this.coverImage)
       }
     },
 
     filters: {
-      agoFilter
+      iso,
+      ago
     },
 
     methods: {

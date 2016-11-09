@@ -6,7 +6,7 @@
               :subtitle="post.subtitle"
               :small-cover-image="post.smallCoverImage"
               :cover-image="post.coverImage"
-              :date="new Date(post.releasedAt.iso)"></post-item>
+              :date="post.releasedAt"></post-item>
   </div>
 </template>
 

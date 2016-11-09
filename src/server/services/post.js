@@ -52,7 +52,28 @@ exports.postDetails = function *() {
   }
 }
 
-exports.postList = function *() {
+exports.postListReleased = function *() {
+  let pageSize = this.request.query.pageSize || 20
+  let pageIndex = this.request.query.pageIndex || 1
+  let summary = this.request.query.summary || false
+  let query = new AV.Query('Post')
+  let postList = []
+
+  summary && query.select(['title', 'subtitle', 'releasedAt', 'coverImage', 'readCount', 'updatedAt'])
+  query.descending('updatedAt')
+  query.limit(pageSize)
+  query.skip(pageSize * (pageIndex - 1))
+  query.equalTo('status', 'released')
+
+  postList = yield query.find()
+  this.status = 200
+  this.body = {
+    code: 0,
+    data: postList
+  }
+}
+
+exports.postListNotDeleted = function *() {
   let pageSize = this.request.query.pageSize || 20
   let pageIndex = this.request.query.pageIndex || 1
   let summary = this.request.query.summary || false

@@ -39,7 +39,7 @@ export default {
     let reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
-
+    console.log('fetch.post', url, request)
     return fetch(url, {
       method: 'POST',
       headers: headers,
@@ -50,31 +50,31 @@ export default {
     }).then(parseResponse).then(checkStatus)
   },
 
-  patch (url, params = {}, headers = {}) {
+  patch (url, request = {}, headers = {}) {
     let reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
-
+    console.log('fetch.patch', url, request)
     return fetch(url, {
       method: 'PATCH',
       headers: reqHeaders,
       credentials:"include",
       mode:'cors',
-      body: JSON.stringify(params)
+      body: JSON.stringify(request)
     }).then(parseResponse).then(checkStatus)
   },
 
-  put (url, param = {}, headers = {}) {
+  put (url, request = {}, headers = {}) {
     let reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
-
+    console.log('fetch.put', url, request)
     return fetch(url, {
       method: 'PUT',
       headers: reqHeaders,
       credentials:"include",
       mode:'cors',
-      body: JSON.stringify(param)
+      body: JSON.stringify(request)
     }).then(parseResponse).then(checkStatus)
   },
 
@@ -82,7 +82,7 @@ export default {
     let reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
-
+    console.log('fetch.delete', url)
     return fetch(url, {
       method: 'DELETE',
       credentials:"include",
