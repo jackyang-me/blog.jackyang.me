@@ -16,9 +16,9 @@
           <td><input type="checkbox" class="u-checkboxField"></td>
           <td><router-link :to="{path: '/blog/post/edit/' + postItem.objectId}" class="u-link">{{postItem.title}}</router-link></td>
           <td>{{postItem.status}}</td>
-          <td>{{postItem.releasedAt | iso}}</td>
+          <td>{{postItem.releasedAt | iso | MMM_D_YYYY}}</td>
           <td>0</td>
-          <td>10</td>
+          <td>{{postItem.readCount || 0}}</td>
         </tr>
       </tbody>
     </table>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import { iso } from 'filters/filters'
+  import { iso, MMM_D_YYYY } from 'filters/filters'
 
   export default {
     props: {
@@ -59,7 +59,8 @@
     },
 
     filters: {
-      iso
+      iso,
+      MMM_D_YYYY
     }
   }
 </script>

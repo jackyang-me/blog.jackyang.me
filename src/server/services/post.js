@@ -16,7 +16,7 @@ exports.create = function *() {
   request.readCount = 0
   request.status = request.status ? request.status : 'draft'
 
-  validateModel(request, PostModel.fields)
+  validateResult = validateModel(request, PostModel.fields)
   if (validateResult.error) {
     this.throw(400, validateResult.error)
   }
@@ -71,12 +71,12 @@ exports.postList = function *() {
 }
 
 exports.update = function *() {
- let postId = this.request.params.postId
- let request = this.body
+ let postId = this.params.postId
+ let request = this.request.body
  let post = AV.Object.createWithoutData('Post', postId)
- let result
+ let result, validateResult
 
- validateModel(request, PostModel.fields)
+ validateResult = validateModel(request, PostModel.fields)
  if (validateResult.error) {
    this.throw(400, validateResult.error)
  }
@@ -96,7 +96,7 @@ exports.partialUpdate = function *() {
 }
 
 exports.delete = function *() {
-  let postId = this.request.params.postId
+  let postId = this.params.postId
   let post = AV.Object.createWithoutData('Post', postId)
   let result
 

@@ -20,6 +20,12 @@ AV.init({
   appKey: config.AV.appKey
 })
 
+AV.User.logIn('ygjack414@hotmail.com', 'ygJack4Blog').then(function (user) {
+  console.log('logined user', user)
+}).catch(function (error) {
+  console.log('login failed', error)
+})
+
 // error handle
 onerror(app)
 app.on('error', function (err, ctx) {

@@ -11,16 +11,17 @@
     },
 
     data () {
+      let that = this
       return {
         toolbarActions: [{
           label: 'CLOSE',
           handler () {
-            console.log('click close')
+            that.$emit('clickclose')
           }
         }, {
           label: 'SAVE',
           handler () {
-            console.log('click save')
+            that.$emit('clicksave')
           }
         }]
       }

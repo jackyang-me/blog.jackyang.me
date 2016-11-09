@@ -23,6 +23,9 @@ const mutations = {
   },
   [type.BLOG_CHANGE_POST_TAGS] (state, { tags }) {
     state.postDetails.tags = tags
+  },
+  [type.BLOG_SAVE_POST] (state, { postDetails }) {
+    state.postDetails = postDetails
   }
 }
 
@@ -47,6 +50,13 @@ const actions = {
   },
   changePostTags ({ commit }, tags) {
     commit(type.BLOG_CHANGE_POST_TAGS, { tags })
+  },
+  savePostDetails ({ commit }, postDetails) {
+    postAPI.savePost(postDetails).then(response => {
+      commit(type.BLOG_SAVE_POST, { postDetails: response.data })
+    }).catch((error) => {
+      alert(error.errorMessage)
+    })
   }
 }
 

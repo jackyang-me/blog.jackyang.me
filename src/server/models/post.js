@@ -33,10 +33,6 @@
   type: String,
   mandatory: false
 }, {
-  name: 'smallCoverImage',
-  type: String,
-  mandatory: false
-}, {
   name: 'readCount',
   type: Number,
   mandatory: true

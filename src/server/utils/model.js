@@ -7,9 +7,13 @@ exports.validateModel = function (model, fields) {
     let field = fields[i]
     let value = model[field.name]
 
-    if (field.mandatory && !lang.hasValue(value)) {
-      return {
-        error: field.name + ' is mandatory'
+    if (!lang.hasValue(value)) {
+      if (field.mandatory) {
+        return {
+          error: field.name + ' is mandatory'
+        }
+      } else {
+        continue
       }
     }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="c-postEditMain">
-    <post-edit-toolbar></post-edit-toolbar>
+    <post-edit-toolbar @clicksave="handleClickSave" @clickclose="handleClickClose"></post-edit-toolbar>
     <div class="l-view">
       <div class="l-view__content">
         <post-editor :content="postDetails.content"
@@ -54,10 +54,17 @@
         'changePostContent',
         'changePostCover',
         'changePostStatus',
-        'changePostTags'
+        'changePostTags',
+        'savePostDetails'
       ]),
       fetchData () {
         this.getPostDetails(this.$route.params.postId)
+      },
+      handleClickSave () {
+        this.savePostDetails(this.postDetails)
+      },
+      handleClickClose () {
+        this.$router.go(-1)
       }
     }
   }

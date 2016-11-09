@@ -2,14 +2,14 @@ function parseResponse (response) {
   return Promise.all([response.status,response.statusText, response.json()])
 }
 
-function checkStatus ([status,statusText,data]) {
-  if(status >= 200 && status < 300){
-    return data;
-  }else{
-    let error = new Error(statusText);
-    error.status = status;
-    error.error_message = data;
-    return Promise.reject(error);
+function checkStatus ([status, statusText, data]) {
+  if (status >= 200 && status < 300) {
+    return data
+  } else {
+    let error = new Error(data.error)
+    error.status = status
+    error.errorMessage = data.error || 'unknown error'
+    return Promise.reject(error)
   }
 }
 
@@ -32,7 +32,7 @@ export default {
       credentials:"include",
       cache: 'default',
       mode:'cors'
-    }).then(response => response.json())
+    }).then(parseResponse).then(checkStatus)
   },
 
   post (url, request = {}, headers = {}) {
@@ -47,7 +47,7 @@ export default {
       credentials:"include",
       mode:'cors',
       body: JSON.stringify(request)
-    }).then(response => response.json())
+    }).then(parseResponse).then(checkStatus)
   },
 
   patch (url, params = {}, headers = {}) {
@@ -61,7 +61,7 @@ export default {
       credentials:"include",
       mode:'cors',
       body: JSON.stringify(params)
-    }).then(response => response.json())
+    }).then(parseResponse).then(checkStatus)
   },
 
   put (url, param = {}, headers = {}) {
@@ -75,7 +75,7 @@ export default {
       credentials:"include",
       mode:'cors',
       body: JSON.stringify(param)
-    }).then(response => response.json())
+    }).then(parseResponse).then(checkStatus)
   },
 
   delete (url, headers = {}) {
@@ -88,6 +88,6 @@ export default {
       credentials:"include",
       headers: reqHeaders,
       mode:'cors'
-    }).then(response => response.json())
+    }).then(parseResponse).then(checkStatus)
   }
 }

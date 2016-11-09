@@ -3,6 +3,7 @@
     <image-field label="cover" title="cover"
                 :block="true"
                 :image="coverImage"
+                @change="handleChangeCover"
                 @uploadstart="handleUploadStart"
                 @uploadprogress="handleUploadProgress"
                 @uploadcomplete="handleUploadComplete"
@@ -71,6 +72,9 @@
     methods: {
       handleInputTags (value) {
         this.localTags = value.split(/,[\s]*/)
+      },
+      handleChangeCover (value) {
+        this.localCoverImage = value
       },
       handleUploadStart () {
         console.log('start upload, show progress modal')

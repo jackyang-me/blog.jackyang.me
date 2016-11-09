@@ -16,3 +16,7 @@ export function MMM_D_YYYY (date) {
 export function iso (date) {
   return date.iso ? new Date(date.iso) : new Date(date)
 }
+
+export function qiniuTinyImage (qiniuImageUrl) {
+  return qiniuImageUrl + '?imageView2/2/w/100'
+}

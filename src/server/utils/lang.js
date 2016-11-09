@@ -15,7 +15,11 @@ function getType (value) {
 }
 
 exports.checkType = function (value, typeConstructor) {
-  return getType(value) === '[object ' + typeConstructor.name + ']'
+  if (value.__type) {
+    return value.__type === typeConstructor.name
+  } else {
+    return getType(value) === '[object ' + typeConstructor.name + ']'
+  }
 }
 
 exports.isString = function (value) {
