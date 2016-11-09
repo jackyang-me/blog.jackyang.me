@@ -3,11 +3,7 @@
     <image-field label="cover" title="cover"
                 :block="true"
                 :image="coverImage"
-                @change="handleChangeCover"
-                @uploadstart="handleUploadStart"
-                @uploadprogress="handleUploadProgress"
-                @uploadcomplete="handleUploadComplete"
-                @uploaderror="handleUploadError"></image-field>
+                @change="handleChangeCover"></image-field>
     <text-field label="tags" :value="tagsString" @input="handleInputTags" :block="true"></text-field>
     <text-field label="status" :value="localStatus" :block="true"></text-field>
   </div>
@@ -75,20 +71,6 @@
       },
       handleChangeCover (value) {
         this.localCoverImage = value
-      },
-      handleUploadStart () {
-        console.log('start upload, show progress modal')
-      },
-      handleUploadProgress (value) {
-        console.log('uploading image', value.percent + '%', value.speed / 1024 + 'kb/s')
-      },
-      handleUploadComplete (imageUrl) {
-        console.log('uploaded, close modal', imageUrl)
-        this.localCoverImage = imageUrl
-      },
-      handleUploadError (error) {
-        alert('upload image error')
-        console.error(error)
       }
     }
   }

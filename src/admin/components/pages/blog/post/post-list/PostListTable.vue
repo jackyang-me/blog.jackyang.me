@@ -6,7 +6,8 @@
           <th class="u-table__cell--minWidth"><input type="checkbox" class="u-checkboxField"></th>
           <th>title</th>
           <th>status</th>
-          <th>date</th>
+          <th>released at</th>
+          <th>last updated at</th>
           <th>comments</th>
           <th>read count</th>
         </tr>
@@ -16,7 +17,9 @@
           <td><input type="checkbox" class="u-checkboxField"></td>
           <td><router-link :to="{path: '/blog/post/edit/' + postItem.objectId}" class="u-link">{{postItem.title}}</router-link></td>
           <td>{{postItem.status}}</td>
-          <td>{{postItem.releasedAt | iso | MMM_D_YYYY}}</td>
+          <td v-if="postItem.status === 'released'">{{postItem.releasedAt | iso | MMM_D_YYYY}}</td>
+          <td v-else></td>
+          <td>{{postItem.updatedAt | iso | MMM_D_YYYY_HH_mm}}</td>
           <td>0</td>
           <td>{{postItem.readCount || 0}}</td>
         </tr>
@@ -26,7 +29,7 @@
 </template>
 
 <script>
-  import { iso, MMM_D_YYYY } from 'filters/filters'
+  import { iso, MMM_D_YYYY, MMM_D_YYYY_HH_mm } from 'filters/filters'
 
   export default {
     props: {
@@ -60,7 +63,8 @@
 
     filters: {
       iso,
-      MMM_D_YYYY
+      MMM_D_YYYY,
+      MMM_D_YYYY_HH_mm
     }
   }
 </script>

@@ -55,10 +55,15 @@
         'changePostCover',
         'changePostStatus',
         'changePostTags',
-        'savePostDetails'
+        'savePostDetails',
+        'createDummyPost'
       ]),
       fetchData () {
-        this.getPostDetails(this.$route.params.postId)
+        if (this.$route.name === 'newPost') {
+          this.createDummyPost()
+        } else {
+          this.getPostDetails(this.$route.params.postId)
+        }
       },
       handleClickSave () {
         this.savePostDetails(this.postDetails)

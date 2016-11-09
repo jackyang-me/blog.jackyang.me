@@ -9,7 +9,7 @@ const PostAVObject = AV.Object.extend('Post')
 
 exports.create = function *() {
   let post = new PostAVObject()
-  let request = this.body
+  let request = this.request.body
   let validateResult = null
   let result = {}
 
@@ -56,11 +56,11 @@ exports.postList = function *() {
   let query = new AV.Query('Post')
   let postList = []
 
-  summary && query.select(['title', 'subtitle', 'releasedAt', 'smallCoverImage', 'coverImage', 'readCount'])
-  query.descending('releasedAt')
+  summary && query.select(['title', 'subtitle', 'releasedAt', 'coverImage', 'readCount', 'updatedAt'])
+  query.descending('updatedAt')
   query.limit(pageSize)
   query.skip(pageSize * (pageIndex - 1))
-  query.equalTo('status', 'released')
+  // query.equalTo('status', 'released')
 
   postList = yield query.find()
   this.status = 200

@@ -11,3 +11,7 @@ export function getPostList (params) {
 export function savePost (postDetails) {
   return fetch.put(`/posts/${postDetails.objectId}`, postDetails)
 }
+
+export function createPost (postDetails) {
+  return fetch.post('/posts', postDetails)
+}

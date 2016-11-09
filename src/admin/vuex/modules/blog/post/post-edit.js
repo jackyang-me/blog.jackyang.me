@@ -1,14 +1,12 @@
 import * as type from 'src/admin/vuex/mutation-types'
 import * as postAPI from 'api/post'
+import moment from 'moment'
 
 const state = {
   postDetails: null
 }
 
 const mutations = {
-  [type.BLOG_RECEIVE_POST] (state, { postDetails }) {
-    state.postDetails = postDetails
-  },
   [type.BLOG_CHANGE_POST_TITLE] (state, { title }) {
     state.postDetails.title = title
   },
@@ -24,16 +22,16 @@ const mutations = {
   [type.BLOG_CHANGE_POST_TAGS] (state, { tags }) {
     state.postDetails.tags = tags
   },
-  [type.BLOG_SAVE_POST] (state, { postDetails }) {
+  [type.BLOG_CHANGE_POST] (state, { postDetails }) {
     state.postDetails = postDetails
   }
 }
 
 const actions = {
   getPostDetails ({ commit }, postId) {
-    commit(type.BLOG_RECEIVE_POST, { postDetails: null })
+    commit(type.BLOG_CHANGE_POST, { postDetails: null })
     postAPI.getPostDetails(postId).then(response => {
-      commit(type.BLOG_RECEIVE_POST, { postDetails: response.data })
+      commit(type.BLOG_CHANGE_POST, { postDetails: response.data })
     })
   },
   changePostTitle ({ commit }, title) {
@@ -52,11 +50,26 @@ const actions = {
     commit(type.BLOG_CHANGE_POST_TAGS, { tags })
   },
   savePostDetails ({ commit }, postDetails) {
-    postAPI.savePost(postDetails).then(response => {
-      commit(type.BLOG_SAVE_POST, { postDetails: response.data })
-    }).catch(error => {
-      alert(error.errorMessage)
-    })
+    if (postDetails.objectId) {
+      postAPI.savePost(postDetails).then(response => {
+        commit(type.BLOG_CHANGE_POST, { postDetails: response.data })
+      }).catch(error => {
+        alert(error.errorMessage)
+      })
+    } else {
+      postAPI.createPost(postDetails).then(response => {
+        commit(type.BLOG_CHANGE_POST, { postDetails: response.data })
+      })
+    }
+  },
+  createDummyPost ({ commit }) {
+    let postDetails = {
+      title: moment(new Date).format('MMM D, YYYY') + ' POST',
+      content: '',
+      coverImage: '',
+      tags: []
+    }
+    commit(type.BLOG_CHANGE_POST, { postDetails })
   }
 }
 
