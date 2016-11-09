@@ -15,6 +15,12 @@
       value: String
     },
 
+    data () {
+      return {
+        localValue: this.value
+      }
+    },
+
     mounted () {
       this.initEditor()
     },
@@ -25,9 +31,14 @@
 
     watch: {
       value (value) {
-        if (this.$options.editor) {
-          this.$options.editor.value(value)
+        // can't make the editor always reactive to props.value, only make editor recieve the init value from props (no empty value)
+        // cause editor.value(props.value) will make user losts his editing focus
+        if (value && !this.localValue) {
+          this.localValue = value
+          this.$options.editor && this.$options.editor.value(value)
         }
+      },
+      localValue (value) {
         this.$emit('change', value)
       }
     },
@@ -120,7 +131,7 @@
           this.localValue = editor.value()
         })
 
-        editor.value(this.value)
+        editor.value(this.localValue)
       },
       handleInsertImage (editor) {
         let cm = editor.codemirror

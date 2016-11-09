@@ -54,7 +54,7 @@ const actions = {
   savePostDetails ({ commit }, postDetails) {
     postAPI.savePost(postDetails).then(response => {
       commit(type.BLOG_SAVE_POST, { postDetails: response.data })
-    }).catch((error) => {
+    }).catch(error => {
       alert(error.errorMessage)
     })
   }
