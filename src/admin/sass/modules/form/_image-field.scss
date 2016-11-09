@@ -31,6 +31,17 @@
     }
   }
 
+  &__uploading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #666;
+    padding: 20% 10px 10px 10px;
+    font-size: 12px;
+  }
+
   &__panel {
     position: absolute;
     display: none;

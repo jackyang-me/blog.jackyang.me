@@ -6,17 +6,25 @@
         <img src="../../../assets/images/icon-delete.svg" alt="" class="u-imageField__delete" @click="handleDelete">
       </div>
       <img class="u-imageField__image" v-if="currentImage" :src="currentImage" :alt="title">
-      <a class="u-imageField__placeholder" v-show="!currentImage" ref="pickFiles">
+      <a class="u-imageField__placeholder" v-show="!currentImage && !uploading" ref="pickFiles">
         <img class="u-imageField_placeholderImage" src="../../../assets/images/placeholder-image.svg" alt="">
         <span class="u-imageField__placeholderText">Add Image</span>
       </a>
+      <div class="u-imageField__uploading" v-show="uploading">
+        <progress-bar :percentage="uploadPercentage" :label="'uploading ' + uploadPercentage + '%, please wait'"></progress-bar>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import Progress from 'components/common/progress/Progress.vue'
+
   export default {
     uploader: null,
+    components: {
+      'progress-bar': Progress
+    },
 
     props: {
       label: String,
@@ -29,10 +37,9 @@
       return {
         currentImage: this.image,
         showPanel: false,
-        uploadStarted: false,
-        uploadPercentage: '',
-        uploadSpeed: '',
-        uploadCompleted: false,
+        uploading: false,
+        uploadPercentage: 0,
+        uploadSpeed: 0,
         uploadError: null
       }
     },
@@ -47,13 +54,10 @@
       uploadPercentage (value) {
         this.$emit('uploadprogress', {percent: value, speed: this.uploadSpeed})
       },
-      uploadStarted (value) {
+      uploading (value) {
         if (value) {
           this.$emit('uploadstart')
-        }
-      },
-      uploadCompleted (value) {
-        if (value) {
+        } else {
           this.$emit('uploadcomplete', this.currentImage)
         }
       },
@@ -98,8 +102,7 @@
           auto_start: true,
           init: {
             BeforeUpload: function () {
-              that.uploadStarted = true
-              that.uploadCompleted = false
+              that.uploading = true
             },
             UploadProgress: function (up, file) {
               that.uploadPercentage = file.percent
@@ -114,8 +117,9 @@
               that.uploadError = err
             },
             UploadComplete: function() {
-              that.uploadStarted = false
-              that.uploadCompleted = true
+              that.uploading = false
+              that.uploadPercentage = 0
+              that.uploadSpeed = 0
             },
             Key: function (up, file) {
               let type = file.type.split('/')[0]
