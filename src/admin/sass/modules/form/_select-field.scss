@@ -1,0 +1,21 @@
+.u-selectField {
+  max-width: 100%;
+  height: $form-controller-height;
+  line-height: $form-controller-height;
+  color: $form-controller-font-color;
+  font-family: inherit;
+  border: $form-controller-border;
+  border-radius: $form-controller-border-radius;
+  transition: all .2s ease;
+
+  &--block {
+    @extend .u-selectField;
+    display: block;
+    width: 100%;
+  }
+
+  &:focus {
+    border-color: #489be0;
+    outline: 0;
+  }
+}

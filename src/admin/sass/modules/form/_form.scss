@@ -1,6 +1,12 @@
+$form-controller-border: 1px solid #e5e5e5;
+$form-controller-border-radius: 2px;
+$form-controller-height: 35px;
+$form-controller-font-color: #666;
+
 @import 'text-field';
 @import 'checkbox-field';
 @import 'image-field';
+@import 'select-field';
 
 .u-formControl {
   position: relative;

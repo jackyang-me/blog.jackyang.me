@@ -67,7 +67,8 @@ const actions = {
       title: moment(new Date).format('MMM D, YYYY') + ' POST',
       content: '',
       coverImage: '',
-      tags: []
+      tags: [],
+      status: 'draft'
     }
     commit(type.BLOG_CHANGE_POST, { postDetails })
   },

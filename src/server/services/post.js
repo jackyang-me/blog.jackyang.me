@@ -15,6 +15,9 @@ exports.create = function *() {
 
   request.readCount = 0
   request.status = request.status ? request.status : 'draft'
+  if (request.status === 'released') {
+    request.releasedAt = new Date()
+  }
 
   validateResult = validateModel(request, PostModel.fields)
   if (validateResult.error) {
@@ -75,6 +78,10 @@ exports.update = function *() {
  let request = this.request.body
  let post = AV.Object.createWithoutData('Post', postId)
  let result, validateResult
+
+ if (!request.releasedAt && request.status === 'released') {
+   request.releasedAt = new Date()
+ }
 
  validateResult = validateModel(request, PostModel.fields)
  if (validateResult.error) {

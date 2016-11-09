@@ -18,7 +18,11 @@ export function MMM_D_YYYY_HH_mm (date) {
 }
 
 export function iso (date) {
-  return date.iso ? new Date(date.iso) : new Date(date)
+  if (!date) {
+    return ''
+  } else {
+    return date.iso ? new Date(date.iso) : new Date(date)
+  }
 }
 
 export function qiniuTinyImage (qiniuImageUrl) {

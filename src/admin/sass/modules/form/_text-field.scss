@@ -1,13 +1,13 @@
 .u-textField {
   display: inline-block;
   padding: 4px 6px;
-  height: 35px;
-  line-height: 35px;
+  height: $form-controller-height;
+  line-height: $form-controller-height;
   max-width: 100%;
-  border: 1px solid #e5e5e5;
-  border-radius: 2px;
+  border: $form-controller-border;
+  border-radius: $form-controller-border-radius;
   font-family: inherit;
-  color: #666;
+  color: $form-controller-font-color;
   background-color: #fff;
   box-sizing: border-box;
   -webkit-appearance: none;
