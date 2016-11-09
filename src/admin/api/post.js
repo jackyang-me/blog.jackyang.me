@@ -15,3 +15,7 @@ export function savePost (postDetails) {
 export function createPost (postDetails) {
   return fetch.post('/posts', postDetails)
 }
+
+export function deletePost (postId) {
+  return fetch.delete(`/posts/${postId}`)
+}

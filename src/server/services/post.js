@@ -60,7 +60,7 @@ exports.postList = function *() {
   query.descending('updatedAt')
   query.limit(pageSize)
   query.skip(pageSize * (pageIndex - 1))
-  // query.equalTo('status', 'released')
+  query.notEqualTo('status', 'deleted')
 
   postList = yield query.find()
   this.status = 200

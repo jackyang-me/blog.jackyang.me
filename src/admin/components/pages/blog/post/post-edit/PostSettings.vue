@@ -6,6 +6,7 @@
                 @change="handleChangeCover"></image-field>
     <text-field label="tags" :value="tagsString" @input="handleInputTags" :block="true"></text-field>
     <text-field label="status" :value="localStatus" :block="true"></text-field>
+    <button class="u-btn--block red c-postEdit__delete" @click="handleDelete" v-if="$route.params.postId">delete</button>
   </div>
 </template>
 
@@ -71,6 +72,9 @@
       },
       handleChangeCover (value) {
         this.localCoverImage = value
+      },
+      handleDelete () {
+        this.$emit('deletepost')
       }
     }
   }

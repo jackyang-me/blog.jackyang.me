@@ -1,7 +1,7 @@
 <template>
   <div class="c-postEditMain">
     <post-edit-toolbar @clicksave="handleClickSave" @clickclose="handleClickClose"></post-edit-toolbar>
-    <div class="l-view">
+    <div class="l-view" v-if="postDetails">
       <div class="l-view__content">
         <post-editor :content="postDetails.content"
                      :title="postDetails.title"
@@ -14,7 +14,8 @@
                        :tags="postDetails.tags"
                        @changecover="changePostCover"
                        @changestatus="changePostStatus"
-                       @changetags="changePostTags"></post-settings>
+                       @changetags="changePostTags"
+                       @deletepost="handleDeletePost"></post-settings>
       </div>
     </div>
   </div>
@@ -44,11 +45,12 @@
     },
 
     watch: {
-      '$route': 'fetchData'
+      $route: 'fetchData'
     },
 
     methods: {
       ...mapActions([
+        'getPostList',
         'getPostDetails',
         'changePostTitle',
         'changePostContent',
@@ -56,7 +58,8 @@
         'changePostStatus',
         'changePostTags',
         'savePostDetails',
-        'createDummyPost'
+        'createDummyPost',
+        'deletePost'
       ]),
       fetchData () {
         if (this.$route.name === 'newPost') {
@@ -69,6 +72,17 @@
         this.savePostDetails(this.postDetails)
       },
       handleClickClose () {
+        this.goBack()
+      },
+      handleDeletePost () {
+        let chooice = confirm('Are you sure to delete this post?')
+        if (chooice) {
+          this.deletePost(this.$route.params.postId)
+          this.goBack()
+        }
+      },
+      goBack () {
+        this.getPostList()
         this.$router.go(-1)
       }
     }

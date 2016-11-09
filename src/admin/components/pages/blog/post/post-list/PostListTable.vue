@@ -3,7 +3,7 @@
     <table class="c-postList__table">
       <thead>
         <tr>
-          <th class="u-table__cell--minWidth"><input type="checkbox" class="u-checkboxField"></th>
+          <!--<th class="u-table__cell--minWidth"><input type="checkbox" class="u-checkboxField"></th>-->
           <th>title</th>
           <th>status</th>
           <th>released at</th>
@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr v-for="postItem in filteredPostList">
-          <td><input type="checkbox" class="u-checkboxField"></td>
+          <!--<td><input type="checkbox" class="u-checkboxField"></td>-->
           <td><router-link :to="{path: '/blog/post/edit/' + postItem.objectId}" class="u-link">{{postItem.title}}</router-link></td>
           <td>{{postItem.status}}</td>
           <td v-if="postItem.status === 'released'">{{postItem.releasedAt | iso | MMM_D_YYYY}}</td>

@@ -70,6 +70,11 @@ const actions = {
       tags: []
     }
     commit(type.BLOG_CHANGE_POST, { postDetails })
+  },
+  deletePost ({ commit }, postId) {
+    postAPI.deletePost(postId).then(response => {
+      commit(type.BLOG_CHANGE_POST, { postDetails: null })
+    })
   }
 }
 

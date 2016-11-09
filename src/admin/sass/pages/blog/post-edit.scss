@@ -6,6 +6,10 @@
   @extend .c-postList__toolbar;
 }
 
+.c-postEdit__delete {
+  margin-top: 40px;
+}
+
 .c-postEditor {
   &__title {
     height: 45px;
