@@ -1,11 +1,13 @@
 'use strict'
 
+const UAParser = require('ua-parser-js')
 const AV = require('leancloud-storage')
 const moment = require('moment');
 const PostModel = require('../models/post')
 const validateModel = require('../utils').model.validateModel
 const fillModel = require('../utils').model.fillModel
 const PostAVObject = AV.Object.extend('Post')
+const userAgentParser = new UAParser()
 
 exports.create = function *() {
   let post = new PostAVObject()
@@ -44,6 +46,12 @@ exports.postDetails = function *() {
     console.log('catch it')
     // this.throw(500, 'get post details failed') // this will end the process of server
   })*/
+
+  let uaResult = userAgentParser.setUA(this.headers['user-agent'])
+  console.log('browser', uaResult.getBrowser())
+  console.log('os', uaResult.getOS())
+  console.log('device', uaResult.getDevice())
+  console.log('ip', this.ip)
 
   this.status = 200
   this.body = {

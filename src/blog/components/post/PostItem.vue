@@ -2,7 +2,6 @@
   <div class="postItem card">
     <div class="postItem__time">{{date | iso | ago}}</div>
     <div class="postItem__cover--leading" v-if="coverImage" v-touch:tap="goToPostDetails">
-      <!--<img :src="coverImage" alt="">-->
       <vue-img-loader :src="coverImage" :preview="smallCoverImage" :blur-preview="false"></vue-img-loader>
     </div>
     <h3 class="postItem__title--after" v-touch:tap="goToPostDetails">{{title}}</h3>
