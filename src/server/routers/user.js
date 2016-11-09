@@ -1,6 +1,6 @@
 var userRouter = require('koa-router')()
 var userService = require('../services/user')
 
-userRouter.get('/user/login')
+userRouter.get('/login')
 
 module.exports = userRouter

@@ -7,6 +7,7 @@ var log4js = require('log4js')
 var bodyParser = require('koa-bodyparser')
 var config = require('./config')
 var AV = require('leancloud-storage')
+// var AV = require('leanengine')
 var PORT = config.port
 var logger = log4js.getLogger()
 var app = koa()
@@ -49,6 +50,9 @@ app.use(bodyParser())
 config.staticPath.forEach(function (staticPath) {
     app.use(serve(staticPath))
 })
+
+// app.use(AV.koa())
+// app.use(AV.Cloud.CookieSession({ framework: 'koa', secret: 'blog.jackyang.me', maxAge: 3600000, fetchUser: true }));
 
 // routes
 app.use(adminRouter.routes())

@@ -1,5 +1,8 @@
 var adminRouter = require('koa-router')()
 var postService = require('../services/post')
+var userService = require('../services/user')
+
+adminRouter.post('/admin/user/login', userService.login)
 
 adminRouter.post('/admin/blog/posts', postService.create)  // new post
 adminRouter.get('/admin/blog/posts', postService.postListNotDeleted) // get post list, need handle pagination page=10&pageSize=10
