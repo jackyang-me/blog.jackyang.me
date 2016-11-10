@@ -1,14 +1,16 @@
 'use strict'
 
 exports.verifyToken = function *(next) {
+  console.log('header', this.header)
   let token = this.header.authentication
-  let session = this.app.context.userSession[token]
+  let userId = this.header['user-id']
+  let session = this.app.context.userSession[userId]
 
-  if (!session) {
+  if (!session || session.token !== token) {
     this.throw(401, 'Unauthorized')
   }
 
-  if (Date.now() - session.created > session.maxAge) {
+  if (Date.now() - session.activatedFrom > session.maxAge) {
     this.throw(401, 'token expired')
   }
 

@@ -5,6 +5,8 @@ function parseResponse (response) {
 function checkStatus ([status, statusText, data]) {
   if (status >= 200 && status < 300) {
     return data
+  } else if (status === 401) {
+    window.location.href = window.location.origin + window.location.pathname
   } else {
     let error = new Error(data.error)
     error.status = status
@@ -17,6 +19,10 @@ function getUserToken () {
   return localStorage ? localStorage.getItem('userToken') : ''
 }
 
+function getUserId () {
+  return localStorage ? localStorage.getItem('userId') : ''
+}
+
 export default {
   get (url, params = {}, headers = {}) {
     let reqHeaders = new Headers()
@@ -24,6 +30,7 @@ export default {
 
     reqHeaders.append('Accept', 'application/json')
     reqHeaders.append('Authentication', getUserToken())
+    reqHeaders.append('User-ID', getUserId())
     Object.keys(params).forEach(param => {
       queries.push(`${param}=${encodeURIComponent(params[param])}`)
     })
@@ -45,6 +52,7 @@ export default {
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
     reqHeaders.append('Authentication', getUserToken())
+    reqHeaders.append('User-ID', getUserId())
     console.log('fetch.post', url, request)
     return fetch(url, {
       method: 'POST',
@@ -61,6 +69,7 @@ export default {
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
     reqHeaders.append('Authentication', getUserToken())
+    reqHeaders.append('User-ID', getUserId())
     console.log('fetch.patch', url, request)
     return fetch(url, {
       method: 'PATCH',
@@ -76,6 +85,7 @@ export default {
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
     reqHeaders.append('Authentication', getUserToken())
+    reqHeaders.append('User-ID', getUserId())
     console.log('fetch.put', url, request)
     return fetch(url, {
       method: 'PUT',
@@ -91,6 +101,7 @@ export default {
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
     reqHeaders.append('Authentication', getUserToken())
+    resHeaders.append('User-ID', getUserId())
     console.log('fetch.delete', url)
     return fetch(url, {
       method: 'DELETE',

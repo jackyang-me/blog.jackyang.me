@@ -3,7 +3,10 @@ import * as userAPI from 'api/user'
 
 const state = {
   userName: '',
-  password: ''
+  password: '',
+  loginResult: {
+    error: false
+  }
 }
 
 const mutations = {
@@ -12,6 +15,9 @@ const mutations = {
   },
   [type.LOGIN_CHANGE_PASSWORD] (state, { password }) {
     state.password = password
+  },
+  [type.LOGIN_CHANGE_RESULT] (state, { result }) {
+    state.loginResult = result
   }
 }
 
@@ -23,15 +29,21 @@ const actions = {
     commit(type.LOGIN_CHANGE_PASSWORD, { password })
   },
   login ({ commit, state }) {
-    userAPI.login(state.userName, state.password).then(response => {
-      console.log('login success', response)
+    let result = {}
+    return userAPI.login(state.userName, state.password).then(response => {
+      result.error = false
       localStorage.setItem('userToken', response.data.token)
+      localStorage.setItem('userId', response.data.userId)
+      commit(type.LOGIN_CHANGE_RESULT, { result })
     }).catch(error => {
-      console.log('login error', error)
+      result.error = error
+      commit(type.LOGIN_CHANGE_RESULT, { result })
     })
   },
   logout ({ commit, state }) {
-
+    userAPI.logout().then(() => {
+      window.location.href = window.location.origin + window.location.pathname
+    })
   }
 }
 

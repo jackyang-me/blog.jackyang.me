@@ -4,6 +4,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [{
+  path: '/',
+  redirect: '/login'
+}, {
   path: '/login',
   name: 'login',
   component: require('components/pages/login/Login.vue')

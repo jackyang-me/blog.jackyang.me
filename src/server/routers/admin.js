@@ -7,6 +7,7 @@ const userService = require('../services/user')
 
 // user
 adminRouter.post('/admin/user/login', userService.login)
+adminRouter.post('/admin/user/logout', userService.logout)
 
 // blog
 adminRouter.post('/admin/blog/posts', tokenService.verifyToken, postService.create)  // new post

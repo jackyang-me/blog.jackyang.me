@@ -5,9 +5,11 @@ const aDay = 24 * 60 * 60 * 1000
 
 function saveUserInSession (session, user) {
   let token = user._sessionToken
-  session[token] = {
-    maxAge: 10 * 1000,
-    created: new Date()
+  let userId = user.get('id')
+  session[userId] = {
+    token: token,
+    maxAge: aDay,
+    activatedFrom: Date.now()
   }
   return token
 }
@@ -18,6 +20,7 @@ exports.login = function *() {
     this.request.body.password
   ).then(response => {
     return {
+      userId: response.get('id'),
       userName: response.get('username'),
       email: response.get('email'),
       token: saveUserInSession(this.app.context.userSession, response)
@@ -30,5 +33,21 @@ exports.login = function *() {
   this.body = {
     code: 0,
     data: result
+  }
+}
+
+exports.logout = function *() {
+  let token = this.header['authentication']
+  let userId = this.header['user-id']
+  let session = this.app.context.userSession[userId]
+
+  if (session && session.token === token) {
+    delete this.app.context.userSession[userId]
+  }
+
+  this.status = 200
+  this.body = {
+    code: 0,
+    data: null
   }
 }
