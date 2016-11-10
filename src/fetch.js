@@ -13,12 +13,17 @@ function checkStatus ([status, statusText, data]) {
   }
 }
 
+function getUserToken () {
+  return localStorage ? localStorage.getItem('userToken') : ''
+}
+
 export default {
   get (url, params = {}, headers = {}) {
     let reqHeaders = new Headers()
     let queries = []
 
     reqHeaders.append('Accept', 'application/json')
+    reqHeaders.append('Authentication', getUserToken())
     Object.keys(params).forEach(param => {
       queries.push(`${param}=${encodeURIComponent(params[param])}`)
     })
@@ -39,6 +44,7 @@ export default {
     let reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
+    reqHeaders.append('Authentication', getUserToken())
     console.log('fetch.post', url, request)
     return fetch(url, {
       method: 'POST',
@@ -54,6 +60,7 @@ export default {
     let reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
+    reqHeaders.append('Authentication', getUserToken())
     console.log('fetch.patch', url, request)
     return fetch(url, {
       method: 'PATCH',
@@ -68,6 +75,7 @@ export default {
     let reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
+    reqHeaders.append('Authentication', getUserToken())
     console.log('fetch.put', url, request)
     return fetch(url, {
       method: 'PUT',
@@ -82,6 +90,7 @@ export default {
     let reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
+    reqHeaders.append('Authentication', getUserToken())
     console.log('fetch.delete', url)
     return fetch(url, {
       method: 'DELETE',

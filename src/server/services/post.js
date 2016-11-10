@@ -1,7 +1,7 @@
 'use strict'
 
 const UAParser = require('ua-parser-js')
-const AV = require('leancloud-storage')
+const AV = require('leanengine')
 const moment = require('moment');
 const PostModel = require('../models/post')
 const validateModel = require('../utils').model.validateModel

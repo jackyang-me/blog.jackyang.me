@@ -1,3 +1,7 @@
+// login
+export const LOGIN_CHANGE_USERNAME = 'login/CHANGE_USERNAME'
+export const LOGIN_CHANGE_PASSWORD = 'login/CHANGE_PASSWORD'
+
 // blog - post
 export const BLOG_CHANGE_TAB = 'blog/CHANGE_TAB'
 export const BLOG_RECEIVE_POSTS = 'blog/RECEIVE_POSTS'

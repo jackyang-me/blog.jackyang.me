@@ -1,21 +1,11 @@
 import * as type from 'src/admin/vuex/mutation-types'
 import post from './post'
 
-const state = {
-  currentTab: 'POST'
-}
+const state = {}
 
-const mutations = {
-  [type.BLOG_CHANGE_TAB] (state, { tab }) {
-    state.currentTab = tab
-  }
-}
+const mutations = {}
 
-const actions = {
-  changeTab ({ commit, state }, tab) {
-    commit(types.BLOG_CHANGE_TAB, { tab })
-  }
-}
+const actions = {}
 
 export default {
   state,

@@ -6,8 +6,7 @@ var onerror = require('koa-onerror')
 var log4js = require('log4js')
 var bodyParser = require('koa-bodyparser')
 var config = require('./config')
-var AV = require('leancloud-storage')
-// var AV = require('leanengine')
+var AV = require('leanengine')
 var PORT = config.port
 var logger = log4js.getLogger()
 var app = koa()
@@ -21,11 +20,7 @@ AV.init({
   appKey: config.AV.appKey
 })
 
-AV.User.logIn('ygjack414@hotmail.com', 'ygJack4Blog').then(function (user) {
-  console.log('logined user', user)
-}).catch(function (error) {
-  console.log('login failed', error)
-})
+app.context.userSession = {}
 
 // error handle
 onerror(app)
