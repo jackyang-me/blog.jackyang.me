@@ -4,10 +4,14 @@ const adminRouter = require('koa-router')()
 const tokenService = require('../services/token')
 const postService = require('../services/post')
 const userService = require('../services/user')
+const uploadService = require('../services/upload')
 
 // user
 adminRouter.post('/admin/user/login', userService.login)
 adminRouter.post('/admin/user/logout', userService.logout)
+
+// upload
+adminRouter.get('/upload/token', /*tokenService.verifyToken,*/ uploadService.generateUptoken)
 
 // blog
 adminRouter.post('/admin/blog/posts', tokenService.verifyToken, postService.create)  // new post

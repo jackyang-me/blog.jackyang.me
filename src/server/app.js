@@ -13,7 +13,6 @@ var app = koa()
 
 var adminRouter = require('./routers/admin')
 var blogRouter = require('./routers/blog')
-var uploadRouter = require('./routers/upload')
 
 AV.init({
   appId: config.AV.appId,
@@ -52,7 +51,6 @@ config.staticPath.forEach(function (staticPath) {
 // routes
 app.use(adminRouter.routes())
 app.use(blogRouter.routes())
-app.use(uploadRouter.routes())
 
 app.listen(PORT, function () {
   logger.debug('server is running on port', PORT)
