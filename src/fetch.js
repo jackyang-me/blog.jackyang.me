@@ -101,7 +101,7 @@ export default {
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
     reqHeaders.append('Authentication', getUserToken())
-    resHeaders.append('User-ID', getUserId())
+    reqHeaders.append('User-ID', getUserId())
     console.log('fetch.delete', url)
     return fetch(url, {
       method: 'DELETE',
