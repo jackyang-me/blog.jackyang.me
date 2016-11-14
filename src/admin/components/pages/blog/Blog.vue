@@ -3,6 +3,7 @@
     <page-header :title="title" :nav-items="navItems"></page-header>
     <page-main></page-main>
     <page-footer></page-footer>
+    <image-selector-modal></image-selector-modal>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
   import PageHeader from 'components/common/PageHeader.vue'
   import PageMain from 'components/common/PageMain.vue'
   import PageFooter from 'components/common/PageFooter.vue'
+  import ImageSelectorModal from 'components/editor/ImageSelectorModal.vue'
 
   export default {
     components: {
       'page-header': PageHeader,
       'page-main': PageMain,
-      'page-footer': PageFooter
+      'page-footer': PageFooter,
+      'image-selector-modal': ImageSelectorModal
     },
 
     data () {

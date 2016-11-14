@@ -5,7 +5,6 @@
       <div class="u-imageField__panel" v-if="currentImage">
         <img src="../../../assets/images/icon-delete.svg" alt="" class="u-imageField__delete" @click="handleDelete">
       </div>
-      <!--<img class="u-imageField__image" v-if="currentImage" :src="currentImage" :alt="title">-->
       <vue-img-loader class="u-imageField__image" v-if="currentImage" :src="currentImage" :preview="previewImage" blur-radius="10"></vue-img-loader>
       <a class="u-imageField__placeholder" v-show="!currentImage && !uploading" ref="pickFiles">
         <img class="u-imageField_placeholderImage" src="../../../assets/images/placeholder-image.svg" alt="">
@@ -98,7 +97,8 @@
       initUploader () {
         var that = this
 
-        this.$options.uploader = Qiniu.uploader({
+        // new QiniuJsSDK to support multi-instance
+        this.$options.uploader = new QiniuJsSDK().uploader({
           runtimes: 'html5, flash, html4',
           browse_button: this.$refs.pickFiles,
           uptoken_url: '/upload/token',

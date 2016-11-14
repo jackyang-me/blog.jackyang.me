@@ -3029,7 +3029,7 @@ span.CodeMirror-selectedtext {
   src: url(static/fonts/Roboto-Bold.ecdd509.eot?#iefix) format("embedded-opentype"), url(static/fonts/Roboto-Bold.39b2c30.woff2) format("woff2"), url(static/fonts/Roboto-Bold.dc81817.woff) format("woff"), url(static/fonts/Roboto-Bold.e31fcf1.ttf) format("truetype");
   font-weight: 700; }
 
-.u-btn, .u-btn--block {
+.u-btn, .u-btn--block, .u-flatBtn {
   position: relative;
   display: inline-block;
   padding: 0 15px;
@@ -3048,11 +3048,18 @@ span.CodeMirror-selectedtext {
   text-align: center;
   text-decoration: none;
   -webkit-appearance: none; }
-  .u-btn:hover, .u-btn--block:hover {
+  .u-btn:hover, .u-btn--block:hover, .u-flatBtn:hover {
     background-color: #3a94e0; }
   .u-btn--block {
     display: block;
     width: 100%; }
+
+.u-flatBtn {
+  background-color: transparent;
+  color: #489be0; }
+  .u-flatBtn:hover {
+    color: #fff;
+    background-color: #3a94e0; }
 
 .u-navbar {
   position: relative;
@@ -3103,7 +3110,7 @@ span.CodeMirror-selectedtext {
   .u-toolbar__tools {
     display: flex;
     flex-direction: row; }
-  .u-toolbar__actions .u-btn:not(:last-child), .u-toolbar__actions .u-btn--block:not(:last-child) {
+  .u-toolbar__actions .u-btn:not(:last-child), .u-toolbar__actions .u-btn--block:not(:last-child), .u-toolbar__actions .u-flatBtn:not(:last-child) {
     margin-right: 6px; }
   .u-toolbar__title {
     font-size: 28px;
@@ -3397,6 +3404,10 @@ td {
   margin-bottom: 20px;
   font-size: 14px;
   line-height: 1.6; }
+
+.c-imageSelectorModal__actions {
+  text-align: right;
+  margin-top: 40px; }
 
 .l-view {
   position: relative;

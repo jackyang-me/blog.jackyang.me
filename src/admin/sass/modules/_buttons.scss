@@ -17,6 +17,7 @@
   text-align: center;
   text-decoration: none;
   -webkit-appearance: none;
+  outline: none;
 
   &:hover {
     background-color: #3a94e0;
@@ -26,5 +27,16 @@
     @extend .u-btn;
     display: block;
     width: 100%;
+  }
+}
+
+.u-flatBtn {
+  @extend .u-btn;
+  background-color: transparent;
+  color: #489be0;
+
+  &:hover {
+    color: #fff;
+    background-color: #3a94e0;
   }
 }
