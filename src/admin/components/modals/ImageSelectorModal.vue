@@ -15,6 +15,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   import Modal from 'components/common/modal/Modal.vue'
   import ImageField from 'components/common/form/ImageField.vue'
   import TextField from 'components/common/form/TextField.vue'
@@ -37,7 +38,19 @@
       }
     },
 
+    watch: {
+      show (value) {
+        if (value) {
+          this.imageUrl = ''
+          this.imageTitle = ''
+        }
+      }
+    },
+
     methods: {
+      ...mapActions([
+        'closeImageSelectorModal'
+      ]),
       handleUploadImageChange (url) {
         this.imageUrl = url
       },
@@ -48,15 +61,15 @@
         this.imageTitle = value
       },
       handleClickCancel () {
-        this.imageUrl = ''
-        this.imageTitle = ''
         this.$emit('cancel')
+        this.closeImageSelectorModal()
       },
       handleClickOK () {
         this.$emit('ok', {
           url: this.imageUrl,
           title: this.imageTitle
         })
+        this.closeImageSelectorModal()
       }
     }
 

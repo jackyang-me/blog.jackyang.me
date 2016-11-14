@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   import SimpleMDE from 'simplemde'
   import marked from 'marked'
 
@@ -44,6 +45,9 @@
     },
 
     methods: {
+      ...mapActions([
+        'openImageSelectorModal'
+      ]),
       initEditor () {
         let editor = null
         let that = this
@@ -134,9 +138,11 @@
         editor.value(this.localValue)
       },
       handleInsertImage (editor) {
-        let cm = editor.codemirror
-        cm.replaceSelection('![](http://)')
-        cm.focus()
+        this.openImageSelectorModal((data) => {
+          let cm = editor.codemirror
+          cm.replaceSelection(`![${data.title}](${data.url})`)
+          cm.focus()
+        })
       }
     }
   }

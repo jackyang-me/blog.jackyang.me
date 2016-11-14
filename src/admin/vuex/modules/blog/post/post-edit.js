@@ -3,7 +3,10 @@ import * as postAPI from 'api/post'
 import moment from 'moment'
 
 const state = {
-  postDetails: null
+  postDetails: null,
+  isImageSelectorModalShow: false,
+  onImageSelectorModalOK: null,
+  onImageSelectorModalCancel: null
 }
 
 const mutations = {
@@ -24,6 +27,16 @@ const mutations = {
   },
   [type.BLOG_CHANGE_POST] (state, { postDetails }) {
     state.postDetails = postDetails
+  },
+  [type.BLOG_CHANGE_IMAGE_SELECTOR_MODAL_STATUS] (state, { show, onOKHandler, onCancelHandler }) {
+    state.isImageSelectorModalShow = show
+    if (show) {
+      state.onImageSelectorModalOK = onOKHandler
+      state.onImageSelectorModalCancel = onCancelHandler
+    } else {
+      state.onImageSelectorModalOK = null
+      state.onImageSelectorModalCancel = null
+    }
   }
 }
 
@@ -78,6 +91,12 @@ const actions = {
     postAPI.deletePost(postId).then(response => {
       commit(type.BLOG_CHANGE_POST, { postDetails: null })
     })
+  },
+  openImageSelectorModal ({ commit }, onOKHandler, onCancelHandler) {
+    commit(type.BLOG_CHANGE_IMAGE_SELECTOR_MODAL_STATUS, { show: true,  onOKHandler, onCancelHandler })
+  },
+  closeImageSelectorModal ({ commit }) {
+    commit(type.BLOG_CHANGE_IMAGE_SELECTOR_MODAL_STATUS, { show: false })
   }
 }
 
