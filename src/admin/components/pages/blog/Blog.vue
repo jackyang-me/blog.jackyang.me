@@ -3,7 +3,7 @@
     <page-header :title="title" :nav-items="navItems"></page-header>
     <page-main></page-main>
     <page-footer></page-footer>
-    <image-selector-modal></image-selector-modal>
+    <image-selector-modal :show="true" @close="handleImageSelectorClose" @ok="handleImageSelectorOK"></image-selector-modal>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
   import PageHeader from 'components/common/PageHeader.vue'
   import PageMain from 'components/common/PageMain.vue'
   import PageFooter from 'components/common/PageFooter.vue'
-  import ImageSelectorModal from 'components/editor/ImageSelectorModal.vue'
+  import ImageSelectorModal from 'components/modals/ImageSelectorModal.vue'
 
   export default {
     components: {
@@ -35,6 +35,15 @@
           label: 'SETTINGS',
           link: '/blog/settings'
         }]
+      }
+    },
+
+    methods: {
+      handleImageSelectorClose () {
+
+      },
+      handleImageSelectorOK (data) {
+
       }
     }
   }

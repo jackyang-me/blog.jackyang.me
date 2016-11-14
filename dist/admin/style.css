@@ -3047,7 +3047,8 @@ span.CodeMirror-selectedtext {
   font-family: inherit;
   text-align: center;
   text-decoration: none;
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+  outline: none; }
   .u-btn:hover, .u-btn--block:hover, .u-flatBtn:hover {
     background-color: #3a94e0; }
   .u-btn--block {

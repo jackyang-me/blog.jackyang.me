@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <modal>
-      <div>
-        <image-field label="upload" block
-                    :image="imageUrl"
-                    @change="handleUploadImageChange"></image-field>
-        <text-field label="url" :value="imageUrl" @input="handleInputImageUrl" block></text-field>
-        <text-field label="title" :value="imageTitle" @input="handleInputImageTitle" block></text-field>
-        <div class="c-imageSelectorModal__actions">
-          <button class="u-flatBtn" @click="handleClickCancel">Cancel</button>
-          <button class="u-btn" @click="handleClickOK">OK</button>
-        </div>
+  <modal v-if="show">
+    <div>
+      <image-field label="upload" block
+                  :image="imageUrl"
+                  @change="handleUploadImageChange"></image-field>
+      <text-field label="url" :value="imageUrl" @input="handleInputImageUrl" block></text-field>
+      <text-field label="title" :value="imageTitle" @input="handleInputImageTitle" block></text-field>
+      <div class="c-imageSelectorModal__actions">
+        <button class="u-flatBtn" @click="handleClickCancel">Cancel</button>
+        <button class="u-btn" @click="handleClickOK">OK</button>
       </div>
-    </modal>
-  </div>
+    </div>
+  </modal>
 </template>
 
 <script>
@@ -26,6 +24,10 @@
       'modal': Modal,
       'image-field': ImageField,
       'text-field': TextField
+    },
+
+    props: {
+      show: Boolean
     },
 
     data () {
@@ -48,10 +50,13 @@
       handleClickCancel () {
         this.imageUrl = ''
         this.imageTitle = ''
-        // close popup
+        this.$emit('cancel')
       },
       handleClickOK () {
-        // return {url: '', title: ''}
+        this.$emit('ok', {
+          url: this.imageUrl,
+          title: this.imageTitle
+        })
       }
     }
 
