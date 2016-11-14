@@ -5,7 +5,8 @@
       <div class="u-imageField__panel" v-if="currentImage">
         <img src="../../../assets/images/icon-delete.svg" alt="" class="u-imageField__delete" @click="handleDelete">
       </div>
-      <img class="u-imageField__image" v-if="currentImage" :src="currentImage" :alt="title">
+      <!--<img class="u-imageField__image" v-if="currentImage" :src="currentImage" :alt="title">-->
+      <vue-img-loader class="u-imageField__image" v-if="currentImage" :src="currentImage" :preview="previewImage" blur-radius="10"></vue-img-loader>
       <a class="u-imageField__placeholder" v-show="!currentImage && !uploading" ref="pickFiles">
         <img class="u-imageField_placeholderImage" src="../../../assets/images/placeholder-image.svg" alt="">
         <span class="u-imageField__placeholderText">Add Image</span>
@@ -18,12 +19,15 @@
 </template>
 
 <script>
+  import { qiniuTinyImage } from 'filters/filters'
   import Progress from 'components/common/progress/Progress.vue'
+  import { VueImgLoader } from 'vue-img-loader'
 
   export default {
     uploader: null,
     components: {
-      'progress-bar': Progress
+      'progress-bar': Progress,
+      'vue-img-loader': VueImgLoader
     },
 
     props: {
@@ -41,6 +45,12 @@
         uploadPercentage: 0,
         uploadSpeed: 0,
         uploadError: null
+      }
+    },
+
+    computed: {
+      previewImage () {
+        return qiniuTinyImage(this.currentImage)
       }
     },
 

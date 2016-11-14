@@ -26,5 +26,5 @@ export function iso (date) {
 }
 
 export function qiniuTinyImage (qiniuImageUrl) {
-  return qiniuImageUrl + '?imageView2/2/w/100'
+  return qiniuImageUrl ? qiniuImageUrl + '?imageView2/2/w/100' : ''
 }
