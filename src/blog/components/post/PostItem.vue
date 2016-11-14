@@ -2,7 +2,7 @@
   <div class="postItem card">
     <div class="postItem__time">{{date | iso | ago}}</div>
     <div class="postItem__cover--leading" v-if="coverImage" v-touch:tap="goToPostDetails">
-      <vue-img-loader :src="coverImage" :preview="smallCoverImage" :blur-preview="false"></vue-img-loader>
+      <vue-img-loader :src="coverImage" :preview="smallCoverImage"></vue-img-loader>
     </div>
     <h3 class="postItem__title--after" v-touch:tap="goToPostDetails">{{title}}</h3>
     <h4 class="postItem__subtitle" v-if="subtitle" v-touch:tap="goToPostDetails">{{subtitle}}</h4>
@@ -10,8 +10,8 @@
 </template>
 
 <script>
-  import { iso, ago, qiniuTinyImage } from 'filters/filters';
-  import { VueImgLoader } from 'vue-img-loader';
+  import { iso, ago, qiniuTinyImage } from 'filters/filters'
+  import { VueImgLoader } from 'vue-img-loader'
 
   export default {
     components: {

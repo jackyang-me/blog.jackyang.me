@@ -1,8 +1,7 @@
 <template>
   <div class="post">
     <post-cover v-if="postDetails && postDetails.coverImage"
-                :image="postDetails.coverImage"
-                :small-image="postDetails.smallCoverImage"></post-cover>
+                :image="postDetails.coverImage"></post-cover>
     <post-details v-if="postDetails"
                   :title="postDetails.title"
                   :subtitle="postDetails.subtitle"

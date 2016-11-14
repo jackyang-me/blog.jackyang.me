@@ -10,12 +10,12 @@
 <template>
   <div class="postCover">
     <div class="postCover__mask"></div>
-    <!--<img class="postCover__image" :src="image">-->
-    <vue-img-loader :src="image" :preview="smallImage" :blur-preview="false" transition="fade" background-color="lightgrey" width="700" height="400"></vue-img-loader>
+    <vue-img-loader :src="image" :preview="smallImage" transition="fade" background-color="lightgrey" width="700" height="400"></vue-img-loader>
   </div>
 </template>
 
 <script>
+  import { qiniuTinyImage } from 'filters/filters'
   import { VueImgLoader } from 'vue-img-loader';
 
   export default {
@@ -24,13 +24,15 @@
     },
 
     props: {
-      smallImage: {
-        type: String,
-        default: ''
-      },
       image: {
         type: String,
         default: ''
+      }
+    },
+
+    computed: {
+      smallImage () {
+        return qiniuTinyImage(this.image)
       }
     }
   };
