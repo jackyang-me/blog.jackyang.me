@@ -3,6 +3,7 @@ var koa = require('koa')
 var serve = require('koa-static')
 var koaLogger = require('koa-logger')
 var onerror = require('koa-onerror')
+var favicon = require('koa-favicon')
 var log4js = require('log4js')
 var bodyParser = require('koa-bodyparser')
 var config = require('./config')
@@ -45,8 +46,8 @@ config.staticPath.forEach(function (staticPath) {
     app.use(serve(staticPath))
 })
 
-// app.use(AV.koa())
-// app.use(AV.Cloud.CookieSession({ framework: 'koa', secret: 'blog.jackyang.me', maxAge: 3600000, fetchUser: true }));
+// favicon
+app.use(favicon(__dirname + './public/favicon.ico'))
 
 // routes
 app.use(adminRouter.routes())
