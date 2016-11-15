@@ -10,6 +10,7 @@ var utils = require('./utils')
 var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
+    publicPath: config.build.assetsPublicPath,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
   },
@@ -24,11 +25,12 @@ var webpackConfig = merge(baseWebpackConfig, {
       }
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+    //new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+    new ExtractTextPlugin('[name].[contenthash].css'),
     new HtmlWebpackPlugin({
       title: 'App', // title is not working for template
       // filename: 'app.html', // default is index html, no matter what's the name of template file
-      template: path.join(__dirname, '../src/index.html'),
+      template: path.join(__dirname, '../../src/admin/index.html'),
       hash: false,
       minify: {
         removeComments: true,

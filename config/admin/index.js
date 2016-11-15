@@ -6,13 +6,13 @@ module.exports = {
     index: path.resolve(__dirname, '../../dist/admin/index.html'),
     assetsRoot: path.resolve(__dirname, '../../dist/admin'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '', // '/'
     productionSourceMap: true
   },
   dev: {
     env: require('./dev.env'),
+    assetsRoot: path.resolve(__dirname, '../../dist/admin'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '',
-    port: 8080
+    assetsPublicPath: ''
   }
 }

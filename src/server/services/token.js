@@ -1,7 +1,6 @@
 'use strict'
 
 exports.verifyToken = function *(next) {
-  console.log('header', this.header)
   let token = this.header.authentication
   let userId = this.header['user-id']
   let session = this.app.context.userSession[userId]

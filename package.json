@@ -4,17 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-admin": "set NODE_ENV=development && node build/admin/build.js",
-    "build-blog": "set NODE_ENV=development && node build/blog/build.js",
+    "build-admin": "set NODE_ENV=development&&node build/admin/build.js",
+    "build-blog": "set NODE_ENV=development&&node build/blog/build.js",
     "start-server": "node src/server/app.js",
-    "start-blog-server": "node src/blog/server/app.js",
-    "start-admin-server": "node src/admin/server/app.js",
-    "release": ""
+    "release-admin": "set NODE_ENV=production&&node build/admin/build.js",
+    "release-blog": "set NODE_ENV=production&&node build/blog/build.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "element-ui": "^1.0.0-rc.6",
     "highlight.js": "^9.7.0",
     "hmacsha1": "^1.0.0",
     "koa": "^1.2.4",
@@ -23,6 +21,7 @@
     "koa-router": "^5.4.0",
     "koa-session": "^3.4.0",
     "koa-static": "^2.0.0",
+    "koa-onerror": "^3.0.1",
     "leanengine": "^1.2.2",
     "log4js": "^0.6.38",
     "marked": "^0.3.6",
@@ -64,7 +63,6 @@
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.0",
     "image-webpack-loader": "^1.8.0",
-    "koa-onerror": "^3.0.1",
     "node-sass": "^3.10.1",
     "opn": "^4.0.2",
     "ora": "^0.3.0",

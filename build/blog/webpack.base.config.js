@@ -11,8 +11,8 @@ module.exports = {
     vendor: ['vue', 'vuex', 'vue-router']
   },
   output: {
-    path: config.build.assetsRoot,
-    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
+    path: config.dev.assetsRoot,
+    publicPath: config.dev.assetsPublicPath,
     filename: '[name].js',
     chunkFilename: '[name].chunk.js'
   },
@@ -87,13 +87,5 @@ module.exports = {
       css: ExtractTextPlugin.extract('css'),
       scss: ExtractTextPlugin.extract('css!sass')
     }
-  },
-  plugins: [
-    /*
-    new webpack.ProvidePlugin({
-      $: 'jQuery' // when use $(), webpack will require('jQuery') from npm modules
-    }),
-    */
-    new ExtractTextPlugin('style.css')
-  ]
+  }
 }

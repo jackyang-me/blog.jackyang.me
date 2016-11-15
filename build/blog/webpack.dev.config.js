@@ -1,5 +1,6 @@
 var webpack = require('webpack')
 var merge = require('webpack-merge')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var config = require('../../config/blog')
@@ -8,6 +9,7 @@ var baseWebpackConfig = require('./webpack.base.config')
 var webpackConfig = merge(baseWebpackConfig, {
   devtool: '#eval-source-map',
   plugins: [
+    new ExtractTextPlugin('style.css'),
     new webpack.DefinePlugin({
       'process.env': config.dev.env
     }),
