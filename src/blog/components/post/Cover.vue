@@ -1,16 +1,7 @@
-<style>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .3s
-}
-.fade-enter, .fade-leave-active {
-  opacity: 0
-}
-</style>
-
 <template>
   <div class="postCover">
     <div class="postCover__mask"></div>
-    <vue-img-loader :src="image" :preview="smallImage" transition="fade" background-color="lightgrey" width="700" height="400"></vue-img-loader>
+    <vue-img-loader :src="image" :preview="smallImage" transition="tran-fade" background-color="lightgrey" width="700" height="400"></vue-img-loader>
   </div>
 </template>
 

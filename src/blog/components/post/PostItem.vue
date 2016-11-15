@@ -2,7 +2,7 @@
   <div class="postItem card">
     <div class="postItem__time">{{date | iso | ago}}</div>
     <div class="postItem__cover--leading" v-if="coverImage" @click="goToPostDetails">
-      <vue-img-loader :src="coverImage" :preview="smallCoverImage"></vue-img-loader>
+      <vue-img-loader :src="coverImage" :preview="smallCoverImage" transition="tran-fade"></vue-img-loader>
     </div>
     <h3 class="postItem__title--after" @click="goToPostDetails">{{title}}</h3>
     <!--<h4 class="postItem__subtitle" v-if="subtitle" @click="goToPostDetails">{{subtitle}}</h4>-->

@@ -1,0 +1,6 @@
+.tran-fade-enter-active, .tran-fade-leave-active {
+  transition: opacity .5s
+}
+.tran-fade-enter, .tran-fade-leave-active {
+  opacity: 0
+}
