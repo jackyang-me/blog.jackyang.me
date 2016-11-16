@@ -10,7 +10,7 @@ exports.create = function *(next) {
   let request = this.request.body
   let uaResult = userAgentParser.setUA(this.headers['user-agent'])
 
-  actionLog.set('ip', this.ip)
+  actionLog.set('ip', this.ips.length > 0 ? this.ips[this.ips.length - 1] : this.ip)
   actionLog.set('os', uaResult.getOS())
   actionLog.set('browser', uaResult.getBrowser())
   actionLog.set('device', uaResult.getDevice())
