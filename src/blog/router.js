@@ -1,7 +1,8 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import { log as actionLog } from 'api/action-log'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [{
   path: '/blog',
@@ -39,8 +40,12 @@ const routes = [{
     }, 'post-details');
   }
   */
-}];
+}]
 
 const router = new VueRouter({routes});
 
-export default router;
+router.afterEach((to, from) => {
+  actionLog({actionType: 'visit', actionKey: to.path})
+})
+
+export default router
