@@ -9,8 +9,9 @@ exports.create = function *(next) {
   let actionLog = new ActionLogAVObject()
   let request = this.request.body
   let uaResult = userAgentParser.setUA(this.headers['user-agent'])
+  let realIP = thsi.headers['x-real-ip'] // x-real-ip in nginx
 
-  actionLog.set('ip', this.ips.length > 0 ? this.ips[this.ips.length - 1] : this.ip)
+  actionLog.set('ip', realIP)
   actionLog.set('os', uaResult.getOS())
   actionLog.set('browser', uaResult.getBrowser())
   actionLog.set('device', uaResult.getDevice())
