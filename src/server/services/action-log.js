@@ -9,7 +9,7 @@ exports.create = function *(next) {
   let actionLog = new ActionLogAVObject()
   let request = this.request.body
   let uaResult = userAgentParser.setUA(this.headers['user-agent'])
-  let realIP = thsi.headers['x-real-ip'] // x-real-ip in nginx
+  let realIP = this.headers['x-real-ip'] // x-real-ip in nginx
 
   actionLog.set('ip', realIP)
   actionLog.set('os', uaResult.getOS())

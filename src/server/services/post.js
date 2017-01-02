@@ -60,7 +60,7 @@ exports.postListReleased = function *() {
   let postList = []
 
   summary && query.select(['title', 'subtitle', 'releasedAt', 'coverImage', 'readCount', 'updatedAt'])
-  query.descending('updatedAt')
+  query.descending('releasedAt')
   query.limit(pageSize)
   query.skip(pageSize * (pageIndex - 1))
   query.equalTo('status', 'released')
@@ -81,7 +81,7 @@ exports.postListNotDeleted = function *() {
   let postList = []
 
   summary && query.select(['title', 'subtitle', 'releasedAt', 'coverImage', 'readCount', 'updatedAt'])
-  query.descending('updatedAt')
+  query.descending('releasedAt')
   query.limit(pageSize)
   query.skip(pageSize * (pageIndex - 1))
   query.notEqualTo('status', 'deleted')
