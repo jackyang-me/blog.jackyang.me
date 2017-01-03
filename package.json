@@ -15,6 +15,7 @@
   "dependencies": {
     "highlight.js": "^9.7.0",
     "hmacsha1": "^1.0.0",
+    "keep-in-touch": "^0.1.0",
     "koa": "^1.2.4",
     "koa-bodyparser": "^2.2.0",
     "koa-favicon": "^1.2.1",

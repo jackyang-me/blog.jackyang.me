@@ -6,7 +6,7 @@
         <post-editor :content="postDetails.content"
                      :title="postDetails.title"
                      @changetitle="changePostTitle"
-                     @changecontent="changePostContent"></post-editor>
+                     @changecontent="handleChangeContent"></post-editor>
       </div>
       <div class="l-view__sidebar">
         <post-settings :cover-image="postDetails.coverImage"
@@ -26,6 +26,7 @@
   import PostEditToolbar from './PostEditToolbar.vue'
   import PostEditor from './PostEditor.vue'
   import PostSettings from './PostSettings.vue'
+  import KeepInTouch from 'keep-in-touch'
 
   export default {
     components: {
@@ -34,8 +35,15 @@
       'post-settings': PostSettings
     },
 
+    kt: null,
+
     created () {
       this.fetchData()
+      this.initKT()
+    },
+
+    destroyed () {
+      this.$options.kt.stop()
     },
 
     computed: {
@@ -67,6 +75,21 @@
         } else {
           this.getPostDetails(this.$route.params.postId)
         }
+      },
+      initKT () {
+        // auto save after stopping input for 2s
+        this.$options.kt = new KeepInTouch({lostInterval: 2000})
+        this.$options.kt.lost(() => {
+          if (!this.postDetails.content) {
+            return
+          } else {
+            this.savePostDetails(this.postDetails)
+          }
+        })
+      },
+      handleChangeContent (content) {
+        this.changePostContent(content)
+        this.$options.kt.touch()
       },
       handleClickSave () {
         this.savePostDetails(this.postDetails)
