@@ -7,7 +7,7 @@
 
 <script>
   import { qiniuTinyImage } from 'filters/filters'
-  import { VueImgLoader } from 'vue-img-loader';
+  import VueImgLoader from 'vue-img-loader';
 
   export default {
     components: {

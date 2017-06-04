@@ -36,7 +36,7 @@
     "ua-parser-js": "^0.7.11",
     "urlsafe-base64": "^1.0.0",
     "vue": "^2.0.2",
-    "vue-img-loader": "^0.1.6",
+    "vue-img-loader": "^0.2.0",
     "vue-router": "^2.0.0",
     "vue-touch": "git://github.com/vuejs/vue-touch.git#next",
     "vuex": "^2.0.0",

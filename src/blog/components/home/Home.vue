@@ -22,7 +22,7 @@
 
 <script>
   import NavBar from 'components/nav/Nav.vue'
-  import { VueImgLoader } from 'vue-img-loader'
+  import VueImgLoader from 'vue-img-loader'
   import { qiniuTinyImage } from 'filters/filters'
 
   export default {

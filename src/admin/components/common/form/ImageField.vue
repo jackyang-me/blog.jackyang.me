@@ -20,7 +20,7 @@
 <script>
   import { qiniuTinyImage } from 'filters/filters'
   import Progress from 'components/common/progress/Progress.vue'
-  import { VueImgLoader } from 'vue-img-loader'
+  import VueImgLoader from 'vue-img-loader'
 
   export default {
     uploader: null,
